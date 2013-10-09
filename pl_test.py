@@ -5,10 +5,17 @@ def test_double_trade():
 	trades = parse_trades(body)
 	assert len(trades) == 2
 
-def test_long_gbpusd_profit():
-	go_long = OpenTradeAlert('GBP/USD', 'LONG', 15210, 15160)
-	take_profit = CloseTradeAlert('GBP/USD', 15310, 'A')
+def test_long_trade_profit():
+	opentrade = OpenTradeAlert('GBP/USD', 'LONG', 15210, 15160)
+	closetrade = CloseTradeAlert('GBP/USD', 15310, 'A')
 	backtest = BackTest()
-	pl = backtest.run([go_long, take_profit])
+	pl = backtest.run([opentrade, closetrade])
 	assert pl.pips == 100
+
+def test_long_trade_loss():
+	opentrade = OpenTradeAlert('GBP/USD', 'LONG', 15210, 15160)
+	closetrade = CloseTradeAlert('GBP/USD', 15200, 'A')
+	backtest = BackTest()
+	pl = backtest.run([opentrade, closetrade])
+	assert pl.pips == -10	
 
