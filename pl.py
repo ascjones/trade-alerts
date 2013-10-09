@@ -24,11 +24,16 @@ def get_email_body(email_message):
 
 regex = re.compile(r'.*(?P<direction>long|shorted) (?P<instrument>[A-Za-z/]*) @ (?P<entry>[0-9]*[.,]?[0-9]+).*protective stop @ (?P<stop>[0-9]*[.,]?[0-9]+)')
 
-def parse_trades(msg):
-	instr_match = re.search(r'TRADE ALERT\n([A-Za-z/]*)(?:\sAND\s)?([A-Za-z/]*)', msg)
-	if instr_match:
-		return instr_match.groups()
-	return ()
+def parse_trade_alerts(msg):
+	def pricestr_toint(price):
+		return int(price.replace(',', ''))
+	multi_move_stop_match = re.search(r'TRADE ALERT\n([A-Z/]*)(?:\sAND\s)?([A-Z/]*)\n.*moving protective stops.*to ([0-9]*[.,]?[0-9]+) and ([0-9]*[.,]?[0-9]+)', msg, re.IGNORECASE)
+	if multi_move_stop_match:
+		groups = multi_move_stop_match.groups()
+		movestop1 = MoveStopTradeAlert(groups[0], 'SHORT', pricestr_toint(groups[2]))
+		movestop2 = MoveStopTradeAlert(groups[1], 'SHORT', pricestr_toint(groups[3]))
+		return [movestop1, movestop2]
+	return []
 
 maildir = mailbox.Maildir('/Users/andrew/.getmail/trade-alerts')
 
@@ -60,6 +65,12 @@ class CloseTradeAlert:
 	def apply(self, trades):
 		trade = next((t for t in trades if t.instrument == self.instrument), None)
 		trade.close(self.price)
+
+class MoveStopTradeAlert:
+	def __init__(self, instrument, direction, stop):
+		self.instrument = instrument
+		self.direction = direction
+		self.stop = stop
 
 class Trade:
 	def __init__(self, instrument, direction, opening, stop):
