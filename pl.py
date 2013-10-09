@@ -1,9 +1,9 @@
+import re
 import quopri
 import html.parser
-import mailbox
-import re
-import pdb
 import email.utils
+import mailbox
+import datetime
 
 class TradeAlert:
 	def __init__(self, msg, date):
@@ -14,7 +14,7 @@ class TradeAlert:
 
 	def get_commands(self):
 		def price_to_pips(price):
-			# remove dots and commas to turn large numbers and decimals into pips
+			# remove dots and commas to turn numbers and decimals into pips
 			stripped = re.sub(r'(\d+)[,.](\d+)', r'\1\2', price)
 			return int(stripped)
 
@@ -95,11 +95,40 @@ class BackTest:
 		result.pips = sum([t.pl() for t in trades])
 		return result
 
+def create_trade_alert(email_message):
+	
+	def get_body():
+		def to_utf(part):
+			charset = part.get_content_charset() if part.get_content_charset() is not None else 'utf-8'
+			s = part.get_payload(decode=True)
+			if part.get_content_type() == "text/html":
+				h = html.parser.HTMLParser()
+				return h.unescape(str(s, charset))
+			else:
+				return str(quopri.decodestring(s), charset)
+
+		maintype = email_message.get_content_maintype()
+		if maintype == 'multipart':
+			for part in email_message.get_payload():
+				if part.get_content_maintype() == 'text':
+					return to_utf(part)
+				elif maintype == 'text':
+					return to_utf(email_message)
+		else:
+			return to_utf(email_message)
+
+	def get_date():
+		date_str = email_message.get('date')
+		date_tuple = email.utils.parsedate_tz(date_str)
+		return datetime.datetime.fromtimestamp(email.utils.mktime_tz(date_tuple))
+
+	return TradeAlert(get_body(), get_date())
+
 if __name__ == "__main__":
 
 	maildir = mailbox.Maildir('/Users/andrew/.getmail/trade-alerts')
-	trade_alerts = [TradeAlertEmail(msg) for msg in maildir]
+	trade_alerts = [create_trade_alert(msg) for msg in maildir]
 
 	for ta in trade_alerts:
-		print(ta.get_date())
+		print(ta.date)
 
