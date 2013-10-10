@@ -127,7 +127,7 @@ def create_trade_alert(email_message):
 		date_tuple = email.utils.parsedate_tz(date_str)
 		return datetime.datetime.fromtimestamp(email.utils.mktime_tz(date_tuple))
 
-	return TradeAlert(get_body(), get_date())
+	return TradeAlert(get_body().strip('\n'), get_date())
 
 if __name__ == "__main__":
 
@@ -137,3 +137,4 @@ if __name__ == "__main__":
 	for ta in trade_alerts:		
 		commands = ta.get_commands()
 		pdb.set_trace()
+		print('{0} - {1}'.format(len(commands), ta.msg))
