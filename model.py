@@ -1,4 +1,5 @@
 import pdb
+from colorama import init, Fore
 
 class OpenTrade:
 	def __init__(self, instrument, direction, price, stop):
@@ -51,7 +52,7 @@ class Trade:
 			self.risk = opening - stop if self.direction == 'LONG' else stop - opening
 		else:
 			self.risk = 'MAX'
-		print('Trade Opened: {0} {1} @ {2}, Stop {3} for {4} pip risk'.format(self.instrument, self.direction, self.opening, self.stop, self.risk))
+		print(Fore.CYAN + 'Trade Opened:' + Fore.RESET + ' {0} {1} @ {2}, Stop {3} for {4} pip risk'.format(self.instrument, self.direction, self.opening, self.stop, self.risk))
 
 	def close(self, price, accounts, kwargs):
 		if price == 'STOP':
@@ -67,7 +68,7 @@ class Trade:
 			raise Exception('Unsupported closing price {0}'.format(price))
 
 		self.closing = price
-		print('Trade Closed: {0} {1} @ {2} for accounts {3}. P/L {4}'.format(self.instrument, self.direction, self.closing, accounts, self.pl()))
+		print(Fore.YELLOW + 'Trade Closed:' + Fore.RESET + ' {0} {1} @ {2} for accounts {3}. P/L {4}'.format(self.instrument, self.direction, self.closing, accounts, self.pl()))
 
 	def move_stop(self, stop):
 		prev_stop = self.stop
