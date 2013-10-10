@@ -11,7 +11,9 @@ class TradeAlert:
 		self.msg = msg
 		self.date = date
 
-	regex = re.compile(r'.*(?P<direction>long|short) (?P<instrument>[A-Z/]*) @ (?P<entry>[0-9]*[.,]?[0-9]+).*protective stop @ (?P<stop>[0-9]*[.,]?[0-9]+)')
+	regex = re.compile(
+		r'.*(?P<direction>long|short\w*) (?P<instrument>[A-Z/]*) @ (?P<entry>[0-9]*[.,]?[0-9]+).*protective stop @ (?P<stop>[0-9]*[.,]?[0-9]+)', 
+		re.IGNORECASE)
 
 	def get_commands(self):
 		def price_to_pips(price):
@@ -32,7 +34,9 @@ class TradeAlert:
 		for match in self.regex.finditer(self.msg):
 			price = price_to_pips(match.group('entry'))
 			stop = price_to_pips(match.group('stop'))
-			commands.append(OpenTrade(match.group('instrument'), match.group('direction'), price, stop))
+			instrument = match.group('instrument').upper()
+			direction = 'LONG' if re.match(r'long', match.group('instrument')) else 'SHORT'
+			commands.append(OpenTrade(instrument, direction, price, stop))
 		return commands
 
 
