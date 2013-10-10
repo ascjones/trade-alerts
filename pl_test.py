@@ -14,6 +14,18 @@ class TestTradeAlertGetCommands:
 		assert commands[0].price == 14950
 		assert commands[0].stop == 15010
 
+	def test_move_stops(self):
+		alert = TradeAlert(
+			'TRADE ALERT\nUSD/JY\n'
+			'I am moving my stop to 99.00 for B and C Accounts to lock in nice\ngains with potential for more!\nJohn', None)
+		commands = alert.get_commands()
+		assert len(commands) == 1
+		assert isinstance(commands[0], MoveStop)
+		assert commands[0].instrument == 'USD/JY'
+		assert commands[0].direction == 'SHORT'
+		assert commands[0].stop == 9900
+		assert commands[0].accounts == ['B', 'C']
+
 	def test_double_trade(self):
 		alert = TradeAlert(
 			'TRADE ALERT\nDOW AND FTSE\nI am moving protective stops on shorts to 15,298 and 6648 resp.\n'

@@ -63,11 +63,11 @@ class CloseTrade:
 
 
 class MoveStop:
-	def __init__(self, instrument, direction, stop):
+	def __init__(self, instrument, direction, stop, accounts):
 		self.instrument = instrument
 		self.direction = direction
 		self.stop = stop
-
+		self.accounts = accounts
 
 class Trade:
 	def __init__(self, instrument, direction, opening, stop):
