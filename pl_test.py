@@ -22,7 +22,6 @@ class TestTradeAlertGetCommands:
 		assert len(commands) == 1
 		assert isinstance(commands[0], MoveStop)
 		assert commands[0].instrument == 'USD/JY'
-		assert commands[0].direction == 'SHORT'
 		assert commands[0].stop == 9900
 		assert commands[0].accounts == ['B', 'C']
 

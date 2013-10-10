@@ -21,15 +21,25 @@ class TradeAlert:
 			stripped = re.sub(r'(\d+)[,.](\d+)', r'\1\2', price)
 			return int(stripped)
 
+		commands = []
+
+		move_stop_match = re.search(
+			r'([A-Z/]*)\n.*moving my stop to ([0-9]*[.,]?[0-9]+) for ([ABC]) and ([ABC]) accounts', self.msg, re.IGNORECASE)
+
+		if move_stop_match:
+			instrument = move_stop_match.group(1)
+			stop = price_to_pips(move_stop_match.group(2))
+			accounts = [move_stop_match.group(3), move_stop_match.group(4)]
+			commands.append(MoveStop(instrument, stop, accounts))
+
 		multi_move_stop_match = re.search(
 			r'([A-Z/]*)(?:\sAND\s)?([A-Z/]*)\n.*moving protective stops.*to ([0-9]*[.,]?[0-9]+) and ([0-9]*[.,]?[0-9]+)',
 			self.msg, re.IGNORECASE)
-		commands = []
 
 		if multi_move_stop_match:
 			groups = multi_move_stop_match.groups()
-			commands.append(MoveStop(groups[0], 'SHORT', price_to_pips(groups[2])))
-			commands.append(MoveStop(groups[1], 'SHORT', price_to_pips(groups[3])))
+			commands.append(MoveStop(groups[0], price_to_pips(groups[2]), 'ALL'))
+			commands.append(MoveStop(groups[1], price_to_pips(groups[3]), 'ALL'))
 
 		for match in self.regex.finditer(self.msg):
 			price = price_to_pips(match.group('entry'))
@@ -63,9 +73,8 @@ class CloseTrade:
 
 
 class MoveStop:
-	def __init__(self, instrument, direction, stop, accounts):
+	def __init__(self, instrument, stop, accounts):
 		self.instrument = instrument
-		self.direction = direction
 		self.stop = stop
 		self.accounts = accounts
 
@@ -136,5 +145,13 @@ if __name__ == "__main__":
 
 	for ta in trade_alerts:		
 		commands = ta.get_commands()
-		pdb.set_trace()
-		print('{0} - {1}'.format(len(commands), ta.msg))
+		# pdb.set_trace()
+		print(ta.msg)
+		print('----------------------------------------------------------')
+		if len(commands) == 0:
+			print('NO COMMANDS\n')
+		else:
+			for c in commands:
+				print('{0}: {1}\n'.format(c.__class__.__name__, vars(c)))
+		print('----------------------------------------------------------')
+		print('\n')	
