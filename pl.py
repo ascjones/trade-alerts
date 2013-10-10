@@ -49,6 +49,9 @@ class TradeAlert:
 			commands.append(OpenTrade(instrument, direction, price, stop))
 		return commands
 
+	def is_trade_alert(self):
+		return re.match(r'^TRADE ALERT.*', self.msg) != None
+
 
 class OpenTrade:
 	def __init__(self, instrument, direction, price, stop):
@@ -143,7 +146,11 @@ if __name__ == "__main__":
 	maildir = mailbox.Maildir('/Users/andrew/.getmail/trade-alerts')
 	trade_alerts = sorted([create_trade_alert(msg) for msg in maildir], key=lambda m: m.date)
 
-	for ta in trade_alerts:		
+	actual_trade_alerts = [ta for ta in trade_alerts if ta.is_trade_alert()]
+	not_trade_alerts = [ta for ta in trade_alerts if ta.is_trade_alert() == False]
+	print('All: {0}, True: {1}, False: {2}'.format(len(trade_alerts), len(actual_trade_alerts), len(not_trade_alerts)))
+
+	for ta in actual_trade_alerts:		
 		commands = ta.get_commands()
 		# pdb.set_trace()
 		print(ta.msg)
