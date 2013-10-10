@@ -4,6 +4,7 @@ import html.parser
 import email.utils
 import mailbox
 import datetime
+import pdb
 
 class TradeAlert:
 	def __init__(self, msg, date):
@@ -127,8 +128,8 @@ def create_trade_alert(email_message):
 if __name__ == "__main__":
 
 	maildir = mailbox.Maildir('/Users/andrew/.getmail/trade-alerts')
-	trade_alerts = [create_trade_alert(msg) for msg in maildir]
+	trade_alerts = sorted([create_trade_alert(msg) for msg in maildir], key=lambda m: m.date)
 
-	for ta in trade_alerts:
-		print(ta.date)
-
+	for ta in trade_alerts:		
+		commands = ta.get_commands()
+		pdb.set_trace()
