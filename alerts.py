@@ -1,6 +1,6 @@
 from model import *
 
-trades = [
+trade_alerts = [
 # ----------------------------------------------------
 # TRADE ALERT
 # DOW
@@ -14,7 +14,7 @@ OpenTrade('DOW', 'SHORT', 14950, 15010),
 # TRADE ALERT
 # USD/JY
 # I am moving my stop to 99.00 for B and C Accounts to lock in nice
-MoveStop('USD/JY', 9900, ['B', 'C']),
+MoveStop('USD/JY', 9900),
 # gains with potential for more!
 # John
 # ----------------------------------------------------
@@ -124,7 +124,7 @@ CloseTrade('USD/JY', 9894, 'ALL'),
 # ----------------------------------------------------
 # TRADE ALERT
 # 1.  GOLD.. I have moved my stop to break even
-MoveStop('GOLD', 'BREAK EVEN', 'ALL'),
+MoveStop('GOLD', 'BREAK EVEN'),
 # 2.  NIKKEI   I have just shorted Rolling Nikkei @ 14,190 with
 # protective stop @ 14,290 for a 100 pip risk.
 OpenTrade('NIKKEI', 'SHORT', 14190, 14290),
@@ -138,13 +138,13 @@ OpenTrade('USD/JY', 'LONG', 9900, None),
 # 2.  Stopped out of long gold @ break even
 CloseTrade('GOLD', 'STOP', 'ALL'),
 # 3.  I am moving my stop on short Dow to 15,120
-MoveStop('DOW', 15120, 'ALL'),
+MoveStop('DOW', 15120),
 # 4.  I am moving my stop on long T-Bonds to break-even.
-MoveStop('JUNE T-BONDS', 'BREAK EVEN', 'ALL'),
+MoveStop('JUNE T-BONDS', 'BREAK EVEN'),
 # 5.  Stopped out of short Nikkei @ 14,295
 CloseTrade('NIKKEI', 'STOP', 'ALL'),
 # 6.  Exited Alcoa @  8.82  for A Account for big gain
-CloseTrade('ALCOA', 'CURRENT', ['A']),
+CloseTrade('ALCOA', 882, ['A']),
 # John
 # ----------------------------------------------------
 # ----------------------------------------------------
@@ -152,7 +152,7 @@ CloseTrade('ALCOA', 'CURRENT', ['A']),
 # USD/JY
 # Now trading at 99.35.
 # I am entering protective stop @ 98.80
-MoveStop('USD/JY', 9880, 'ALL'),
+MoveStop('USD/JY', 9880),
 # John
 # ----------------------------------------------------
 # ----------------------------------------------------
@@ -250,8 +250,8 @@ CloseTrade('ALCOA', 864, 'ALL'),
 OpenTrade('GOLD', 'LONG', 14380, 14280),
 # EUR/USD, AUS/USD
 # I have just moved protective stops to break-even
-MoveStop('EUR/USD', 'BREAK EVEN', 'ALL'),
-MoveStop('AUS/USD', 'BREAK EVEN', 'ALL'),
+MoveStop('EUR/USD', 'BREAK EVEN'),
+MoveStop('AUS/USD', 'BREAK EVEN'),
 # JUNE T-BONDS
 # I have just placed order to buy @ 145.00 on stop.  If filled, will
 # place protective stop @ 144.20 for an 80 pip risk.
@@ -266,7 +266,7 @@ MoveStop('AUS/USD', 'BREAK EVEN', 'ALL'),
 # TRADE ALERT
 # USD.JY
 # I have exited for B Account for 300 pip gain.
-CloseTrade('USD/JY', 'CURRENT', ['B']),
+CloseTrade('USD/JY', None, ['B'], pl=300),
 # John
 # ----------------------------------------------------
 # ----------------------------------------------------
@@ -397,14 +397,14 @@ OpenTrade('GOLD', 'LONG', 136420, 135420),
 # GOLD
 # I have set order exiting my long Gold trade for A Account only @
 # $1419.
-MoveStop('GOLD', 14190, ['A']),
+# MoveStop('GOLD', 14190, ['A']), # TODO
 # John
 # ----------------------------------------------------
 # ----------------------------------------------------
 # TRADE ALERT
 # GOLD
 # I have moved protective stop to break even.
-MoveStop('GOLD', 'BREAK EVEN', 'ALL'),
+MoveStop('GOLD', 'BREAK EVEN'),
 # John
 # ----------------------------------------------------
 # ----------------------------------------------------
@@ -431,7 +431,7 @@ OpenTrade('BARCLAYS', 'SHORT', 3220, 3320),
 # TRADE ALERT
 # DOW
 # I have moved protective stop to break even @ 15,355.
-MoveStop('DOW', 15355, 'ALL'),
+MoveStop('DOW', 15355),
 # John
 # ----------------------------------------------------
 # ----------------------------------------------------
@@ -449,7 +449,7 @@ MoveStop('DOW', 15355, 'ALL'),
 # TRADE ALERTS
 # AUS/USDI have moved my protective stop on short AUS/USD in C Account
 # to 0.9680
-MoveStop('AUS/USD', 9680, ['C']),
+MoveStop('AUS/USD', 9680),
 # DOWI am stopped at break-even 15,355
 CloseTrade('DOW', 15355, 'ALL'),
 # USD/JYI have exited my short trade USD/JY @ 102.00 for a small loss.
@@ -579,7 +579,7 @@ CloseTrade('DOW', 15000, ['A']),
 CloseTrade('FTSE', 6410, ['A']),
 # SEPT T-BONDS
 # I have moved my stop to break even @ 140.20
-MoveStop('SEPT T-BONDS', 14020, 'ALL'),
+MoveStop('SEPT T-BONDS', 14020),
 # John
 # ----------------------------------------------------
 # ----------------------------------------------------
@@ -609,8 +609,8 @@ OpenTrade('EUR/USD', 'SHORT', 13225, 13260),
 # TRADE ALERT
 # DOW AND FTSE
 # I am moving protective stops on shorts to 15,298 and 6648 resp.
-MoveStop('DOW', 15298, 'ALL'),
-MoveStop('FTSE', 6648, 'ALL'),
+MoveStop('DOW', 15298),
+MoveStop('FTSE', 6648),
 # USD/JY
 # I have just gone long USD/JY @ 97.20 with protective stop @ 96.20 for
 OpenTrade('USD/JY', 'SHORT', 9720, 9620),
@@ -690,7 +690,7 @@ CloseTrade('GOLD', 13800, 'ALL'),
 # TRADE ALERT
 # DOW
 # I have moved my stop on short Dow trade to break even @ 15,125
-MoveStop('DOW', 15125, 'ALL'),
+MoveStop('DOW', 15125),
 # John
 # ----------------------------------------------------
 # ----------------------------------------------------
@@ -805,7 +805,7 @@ OpenTrade('SEPT T-BONDS', 'LONG', 13420, 13350),
 # I have taken profit on long Sept T-Bonds for A ACCOUNT @ 135.30 and
 CloseTrade('SEPT T-BONDS', 13530, ['A']),
 # moved stops for B and C Accounts to break even
-MoveStop('SEPT T-BONDS', 'BREAK EVEN', ['B', 'C']),
+MoveStop('SEPT T-BONDS', 'BREAK EVEN'),
 # John
 # ----------------------------------------------------
 # ----------------------------------------------------
@@ -1369,9 +1369,9 @@ OpenTrade('DEC T-BONDS', 'SHORT', 13016, 13060),
 # ______________________________
 # I have moved my protective stops to break-even on:
 # Short DAX (8245)
-MoveStop('DAX', 8245, 'ALL'),
+MoveStop('DAX', 8245),
 # Short EUR/USD (1.3340)
-MoveStop('EUR/USD', 13340, 'ALL'),
+MoveStop('EUR/USD', 13340),
 # John
 # ----------------------------------------------------
 # ----------------------------------------------------
@@ -1430,7 +1430,7 @@ OpenTrade('USD/JY', 'SHORT', 9970, 10030),
 # TRADE ALERT
 # USD/JY
 # I have just shorted USD/JY @ 99.70 with protective stop @ 100.30 for a
-OpenTrade('USD/JY', 'SHORT', 9970, 10030)
+OpenTrade('USD/JY', 'SHORT', 9970, 10030),
 # 60 pip risk.
 # John
 # ----------------------------------------------------
@@ -1629,7 +1629,7 @@ CloseTrade('DEC T-BONDS', 13124, ['A']),
 # and C trades still open and have moved stop on them from $1286 to
 # $1330.
 CloseTrade('GOLD', 13630, ['A']),
-MoveStop('GOLD', 13300, ['B', 'C']),
+MoveStop('GOLD', 13300),
 # It has hit Fib 50% retrace and meeting of two tramlines (charts later
 # today in MC post)
 
