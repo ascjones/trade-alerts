@@ -5,6 +5,7 @@ import email.utils
 import mailbox
 import datetime
 import pdb
+from model import *
 
 class TradeAlert:
 	def __init__(self, msg, date):
@@ -50,54 +51,7 @@ class TradeAlert:
 		return commands
 
 	def is_trade_alert(self):
-		return re.match(r'^TRADE ALERT.*', self.msg) != None
-
-
-class OpenTrade:
-	def __init__(self, instrument, direction, price, stop):
-		self.instrument = instrument
-		self.direction = direction
-		self.price = price
-		self.stop = stop
-
-	def apply(self, trades):
-		trades.append(Trade(self.instrument, self.direction, self.price, self.stop))
-
-
-class CloseTrade:
-	def __init__(self, instrument, price, account):
-		self.instrument = instrument
-		self.price = price
-		self.account = account
-
-	def apply(self, trades):
-		trade = next((t for t in trades if t.instrument == self.instrument), None)
-		trade.close(self.price)
-
-
-class MoveStop:
-	def __init__(self, instrument, stop, accounts):
-		self.instrument = instrument
-		self.stop = stop
-		self.accounts = accounts
-
-class Trade:
-	def __init__(self, instrument, direction, opening, stop):
-		self.instrument = instrument
-		self.direction = direction
-		self.opening = opening
-		self.stop = stop
-		self.closing = None
-
-	def close(self, price):
-		self.closing = price
-
-	def isopen(self):
-		return self.closing == None
-
-	def pl(self):
-		return self.closing - self.opening
-
+		return re.match(r'TRADE ALERT.*', self.msg, re.MULTILINE) != None
 
 class BackTestResult:
 	pass
@@ -146,19 +100,36 @@ if __name__ == "__main__":
 	maildir = mailbox.Maildir('/Users/andrew/.getmail/trade-alerts')
 	trade_alerts = sorted([create_trade_alert(msg) for msg in maildir], key=lambda m: m.date)
 
+	# with open('/Users/andrew/code/trade-alerts/trades.txt', 'w') as f:
+	# 	for ta in trade_alerts:
+	# 		f.write('----------------------------------------------------\n')
+	# 		f.write(ta.msg + '\n')
+	# 		f.write('----------------------------------------------------\n')
+
 	actual_trade_alerts = [ta for ta in trade_alerts if ta.is_trade_alert()]
 	not_trade_alerts = [ta for ta in trade_alerts if ta.is_trade_alert() == False]
 	print('All: {0}, True: {1}, False: {2}'.format(len(trade_alerts), len(actual_trade_alerts), len(not_trade_alerts)))
 
-	for ta in actual_trade_alerts:		
-		commands = ta.get_commands()
-		# pdb.set_trace()
-		print(ta.msg)
-		print('----------------------------------------------------------')
-		if len(commands) == 0:
-			print('NO COMMANDS\n')
-		else:
+	# print all OpenTrades to file
+	with open('/Users/andrew/code/trade-alerts/trades.txt', 'w') as f:
+		for ta in trade_alerts:
+			commands = ta.get_commands()
+			f.write('----------------------------------------------------\n')
+			f.write(ta.msg + '\n')
 			for c in commands:
-				print('{0}: {1}\n'.format(c.__class__.__name__, vars(c)))
-		print('----------------------------------------------------------')
-		print('\n')	
+					if isinstance(c, OpenTrade):
+						f.write("OpenTrade('{0}', '{1}', {2}, {3})\n".format(c.instrument, c.direction, c.price, c.stop))
+			f.write('----------------------------------------------------\n')
+
+	# for ta in trade_alerts:		
+	# 	commands = ta.get_commands()
+	# 	# pdb.set_trace()
+	# 	print(ta.msg)
+	# 	print('----------------------------------------------------------')
+	# 	if len(commands) == 0:
+	# 		print('NO COMMANDS\n')
+	# 	else:
+	# 		for c in commands:
+	# 			print('{0}: {1}\n'.format(c.__class__.__name__, vars(c)))
+	# 	print('----------------------------------------------------------')
+	# 	print('\n')	
