@@ -1,18 +1,23 @@
+import mailbox
 import fileinput
+import email.utils
+import datetime
+import re
 
 def insert_dates():
+	def get_date(msg):
+		date_str = msg.get('date')
+		date_tuple = email.utils.parsedate_tz(date_str)
+		return datetime.datetime.fromtimestamp(email.utils.mktime_tz(date_tuple))
 
 	maildir = mailbox.Maildir('/Users/andrew/.getmail/trade-alerts')
-	trade_alerts = sorted([create_trade_alert(msg) for msg in maildir], key=lambda m: m.date)
-	dates = [ta.date for ta in trade_alerts]
+	dates = sorted([get_date(msg) for msg in maildir])
 
-	cmd_re = re.compile(r'')
-
-	urr_date_i = 0
+	curr_date_i = 0
 	for line in fileinput.input('/Users/andrew/code/trade-alerts/alerts.py', inplace=1):
-		if re.match('^# John', string):
+		if re.match('^# John', line):
 			# end of current Trade Alert move to next date
-			curr_date_i++
+			curr_date_i += 1
 		date = dates[curr_date_i]
 		line = re.sub(r'^[^#].*(\),)', '"{}"),'.format(date.isoformat()), line.rstrip())
 		print(line)
