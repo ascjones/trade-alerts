@@ -27,3 +27,12 @@ def test_pl_multiple_trades():
 	assert len(trades) == 2
 	assert_trade(trades[0], instrument='USD/JY', direction='LONG', opening=9900, stop=9880, closing=10000)
 	assert_trade(trades[1], instrument='USD/JY', direction='LONG', opening=10000, stop=9900, closing=9900)
+
+def test_short_trade_pl():
+	alerts = [
+		OpenTrade('DOW', 'SHORT', 15000, 15100),
+		CloseTrade('DOW', 14900, 'ALL')
+	]
+	trades = backtest.run_backtest(alerts)
+	assert len(trades) == 1
+	assert trades[0].pl() == 100

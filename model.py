@@ -89,4 +89,4 @@ class Trade:
 		return self.closing == None
 
 	def pl(self):
-		return self.closing - self.opening
+		return self.closing - self.opening if self.direction == 'LONG' else self.opening - self.closing
