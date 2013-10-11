@@ -287,7 +287,7 @@ OpenTrade('GOLD', 'LONG', 14100, 14040),
 # TRADE ALERT
 # APPLE
 # I have just gone long Apple @ 434.50 with protective stop @ 428 for a
-OpenTrade('APPLE', 'SHORT', 43450, 42800),
+OpenTrade('APPLE', 'LONG', 43450, 42800),
 # 65 pip stop.
 # John
 # ----------------------------------------------------
@@ -613,7 +613,7 @@ MoveStop('DOW', 15298),
 MoveStop('FTSE', 6648),
 # USD/JY
 # I have just gone long USD/JY @ 97.20 with protective stop @ 96.20 for
-OpenTrade('USD/JY', 'SHORT', 9720, 9620),
+OpenTrade('USD/JY', 'LONG', 9720, 9620),
 # a 100 pip risk.
 # John
 # ----------------------------------------------------
@@ -644,7 +644,7 @@ CloseTrade('BARCLAYS', 3000, ['A']), #todo: check which trade
 # TRADE ALERT
 # GOLD
 # I have just gone long Gold @ 1379 with protective stop @ 1372 for a 70
-OpenTrade('GOLD', 'SHORT', 13790, 13720),
+OpenTrade('GOLD', 'LONG', 13790, 13720),
 # pip risk.
 # John 
 # ----------------------------------------------------
@@ -697,7 +697,7 @@ MoveStop('DOW', 15125),
 # TRADE ALERT
 # GOLD
 # I have just gone long gold @ 1386 with protective stop @ 1378 for an
-OpenTrade('GOLD', 'SHORT', 13860, 13780),
+OpenTrade('GOLD', 'LONG', 13860, 13780),
 # 80 pip risk.
 # John
 # ----------------------------------------------------
@@ -828,7 +828,7 @@ OpenTrade('SEPT T-BONDS', 'LONG', 13445, 13400),
 # TRADE ALERTS
 # GOLD
 # I have just gone long Gold @ 1241 with protective stop @ 1231 for a
-OpenTrade('GOLD', 'SHORT', 12410, 12310),
+OpenTrade('GOLD', 'LONG', 12410, 12310),
 # 100 pip risk
 # EUR/USD
 # I have moved protective stop on short trade to break even @ 1.3190
@@ -1291,7 +1291,7 @@ OpenTrade('NASDAQ', 'SHORT', 3100, 3130),
 # TRADE ALERT
 # ALCOA
 # I have just gone long Alcoa @ 8.20 with protective stop @ 7.90.
-OpenTrade('ALCOA', 'SHORT', 820, 790),
+OpenTrade('ALCOA', 'LONG', 820, 790),
 # I have some excellent tramlines working and am returning to this
 # market after a break where it has been forming a bottom, I believe.
 # John
@@ -1386,7 +1386,7 @@ MoveStop('EUR/USD', 13340),
 # broken.
 # TRADE  I have just shorted TESLA Motors @ 165.90 with protective stop
 # @ 170.00
-OpenTrade('TESLA', 'SHORT', 16590, 17000),
+OpenTrade('TESLA', 'SHORT', 1659, 1700),
 # John
 # ----------------------------------------------------
 # ----------------------------------------------------
@@ -1506,7 +1506,7 @@ OpenTrade('DEC T-BONDS', 'LONG', 12880, 12840),
 # TESLA MOTORS (US SHARE)
 # I have just shorted Tesla @ 165.10 with protective stop @ 169.
 # John
-OpenTrade('TESLA', 'SHORT', 16510, 169),
+OpenTrade('TESLA', 'SHORT', 1651, 1690),
 # ----------------------------------------------------
 # ----------------------------------------------------
 # TRADE ALERT
@@ -1783,7 +1783,7 @@ OpenTrade('USD/JY', 'LONG', 9860, 9830),
 # With five down and a pos mom div - and the big gap now closed, stocks
 # are due a good rebound in an A-B-C of over 100 pips.
 # I have just gone long Dow @ 15,360 with protective stop @ 15,315 for a
-OpenTrade('DOW', 'SHORT', 15360, 15315),
+OpenTrade('DOW', 'LONG', 15360, 15315),
 # 45 pip risk.
 # John
 # ----------------------------------------------------

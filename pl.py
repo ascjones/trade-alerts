@@ -53,18 +53,6 @@ class TradeAlert:
 	def is_trade_alert(self):
 		return re.match(r'TRADE ALERT.*', self.msg, re.MULTILINE) != None
 
-class BackTestResult:
-	pass
-
-
-class BackTest:
-	def run(self, trade_alerts):
-		trades = list()
-		for alert in trade_alerts:
-			alert.apply(trades)
-		result = BackTestResult()
-		result.pips = sum([t.pl() for t in trades])
-		return result
 
 def create_trade_alert(email_message):
 	

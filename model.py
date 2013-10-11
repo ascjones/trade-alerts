@@ -46,15 +46,24 @@ class Trade:
 		self.direction = direction
 		self.opening = opening
 		self.stop = stop
-		self.closing = None
+		self.closing_prices = {}
 
 		if stop:
-			self.risk = opening - stop if self.direction == 'LONG' else stop - opening
+			if direction == 'LONG':
+				if opening < stop:
+					raise Exception('Invalid Stop for LONG trade. Entry {0} < Stop {1}'.format(opening, stop))
+				self.risk = opening - stop
+			elif direction == 'SHORT':
+				if opening > stop:
+					raise Exception('Invalid Stop for SHORT trade. Entry {0} > Stop {1}'.format(opening, stop))
+				self.risk = stop - opening
 		else:
 			self.risk = 'MAX'
 
 		print('{:<13} {:<13} {:<6} @ {:<6} Stop: {:<6} Risk: {:<4}'.format(
 			'Trade Opened:', self.instrument, self.direction, self.opening, self.stop, self.risk))
+
+	account_ids = ['A','B','C']
 
 	def close(self, price, accounts, kwargs):
 		if price == 'STOP':
@@ -69,12 +78,19 @@ class Trade:
 		elif isinstance(price, str):
 			raise Exception('Unsupported closing price {0}'.format(price))
 
-		self.closing = price
-		pl = self.pl()
-		pl_color = Fore.GREEN if pl > 0 else Fore.RED
+		# if 'ALL' accounts then close remaining open accounts
+		open_accounts = [a for a in self.account_ids if a not in self.closing_prices.keys()]
+		accounts_to_close = open_accounts if accounts == 'ALL' else accounts
 
-		print('{}{:<13} {:<13} {:<6} @ {:<6} for accounts {:<6}{}P/L: {}{}'.format(
-			Fore.YELLOW, 'Trade Closed:', self.instrument, self.direction, self.closing, accounts, pl_color, pl, Fore.RESET))
+		for account in accounts_to_close:
+			self.closing_prices[account] = price
+
+		accounts_pl = dict([accpl for accpl in self.pl().items() if accpl[0] in accounts_to_close])
+		total_pl = sum(accounts_pl.values())
+		pl_color = Fore.GREEN if total_pl > 0 else Fore.RED
+
+		print('{}{:<13} {:<13} {:<6} @ {:<6} for accounts {:<16}{}P/L: {}{}'.format(
+			Fore.YELLOW, 'Trade Closed:', self.instrument, self.direction, price, accounts, pl_color, accounts_pl, Fore.RESET))
 
 	def move_stop(self, stop):
 		prev_stop = self.stop
@@ -89,4 +105,7 @@ class Trade:
 		return self.closing == None
 
 	def pl(self):
-		return self.closing - self.opening if self.direction == 'LONG' else self.opening - self.closing
+		accounts_pl = {}
+		for account, closing in self.closing_prices.items():
+			accounts_pl[account] = closing - self.opening if self.direction == 'LONG' else self.opening - closing
+		return accounts_pl
