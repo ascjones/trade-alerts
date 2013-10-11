@@ -1690,7 +1690,7 @@ OpenTrade('USD/JY', 'LONG', 9945, 9920),
 # TRADE ALERT
 # GBP/USD
 # I have just taken profit for A Account on short GBP/USD @ 1.600.
-CloseTrade('GBP/USD', 1600, ['A']),
+CloseTrade('GBP/USD', 16000, ['A']),
 # It has hit a lower tramline support.  Will keep B and C trades open
 # with stops at break even.
 

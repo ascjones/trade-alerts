@@ -20,7 +20,7 @@ class CloseTrade:
 		self.kwargs = kwargs
 
 	def apply(self, trades):
-		trade = next((t for t in trades if t.instrument == self.instrument), None)
+		trade = next((t for t in trades[::-1] if t.instrument == self.instrument), None)
 		if trade:
 			trade.close(self.price, self.accounts, self.kwargs)
 		else:
@@ -33,7 +33,7 @@ class MoveStop:
 		self.stop = stop
 
 	def apply(self, trades):
-		trade = next((t for t in trades if t.instrument == self.instrument), None)
+		trade = next((t for t in trades[::-1] if t.instrument == self.instrument), None)
 		if trade:
 			trade.move_stop(self.stop)
 		else:
@@ -52,6 +52,7 @@ class Trade:
 			self.risk = opening - stop if self.direction == 'LONG' else stop - opening
 		else:
 			self.risk = 'MAX'
+
 		print('{:<13} {:<13} {:<6} @ {:<6} Stop: {:<6} Risk: {:<4}'.format(
 			'Trade Opened:', self.instrument, self.direction, self.opening, self.stop, self.risk))
 
@@ -80,6 +81,7 @@ class Trade:
 		if stop == 'BREAK EVEN':
 			stop = self.opening
 		self.stop = stop
+
 		print('{}{:<13} {:<13} {:<6} from {} to {}{}'.format(
 			Fore.MAGENTA, 'Stop Moved:', self.instrument, self.direction, prev_stop, self.stop, Fore.RESET))
 
