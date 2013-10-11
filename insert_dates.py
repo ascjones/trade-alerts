@@ -19,7 +19,7 @@ def insert_dates():
 			# end of current Trade Alert move to next date
 			curr_date_i += 1
 		date = dates[curr_date_i]
-		line = re.sub(r'^[^#].*(\),)', '"{}"),'.format(date.isoformat()), line.rstrip())
+		line = re.sub(r'^(?!#)(.*)(\))', r'\1, "{}")'.format(date.isoformat()), line.rstrip())
 		print(line)
 
 if __name__ == '__main__':

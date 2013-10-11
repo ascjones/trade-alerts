@@ -7,14 +7,14 @@ trade_alerts = [
 # I am going out on a limb a little here, but..
 # I have shorted Dow @ 14,950 with protective stop @ 15,010 for a 60 pip
 # risk.
-OpenTrade('DOW', 'SHORT', 14950, 15010),
+OpenTrade('DOW', 'SHORT', 14950, 15010, "2013-05-06T16:01:02"),
 # John
 # ----------------------------------------------------
 # ----------------------------------------------------
 # TRADE ALERT
 # USD/JY
 # I am moving my stop to 99.00 for B and C Accounts to lock in nice
-MoveStop('USD/JY', 9900),
+MoveStop('USD/JY', 9900, "2013-05-06T17:25:01"),
 # gains with potential for more!
 # John
 # ----------------------------------------------------
@@ -22,7 +22,7 @@ MoveStop('USD/JY', 9900),
 # TRADE ALERT
 # EUR/USD
 # I have shorted EUR/USD @ 1.3110 with protective stop @ 1.3160 for a 50
-OpenTrade('EUR/USD', 'SHORT', 13110, 13160),
+OpenTrade('EUR/USD', 'SHORT', 13110, 13160, "2013-05-07T14:34:20"),
 # pip risk.
 # I will have a new post on FMT shortly.
 # John
@@ -32,9 +32,9 @@ OpenTrade('EUR/USD', 'SHORT', 13110, 13160),
 # AUS/USD
 # I have taken profit for A Account on AUS/USD @ 10160 for a 100 pip
 # profit.
-CloseTrade('AUS/USD', 10160, ['A']),
+CloseTrade('AUS/USD', 10160, ['A'], "2013-05-07T14:46:46"),
 # Also, stops on USD/JY were elected today and profits taken for B and C
-CloseTrade('USD/JY', 'STOP', ['B', 'C']),
+CloseTrade('USD/JY', 'STOP', ['B', 'C'], "2013-05-07T14:46:46"),
 # Accounts of 165 pips..
 # John
 # ----------------------------------------------------
@@ -43,9 +43,9 @@ CloseTrade('USD/JY', 'STOP', ['B', 'C']),
 
 # 1. I have shorted USD/JY @ 99.00 with protective stop @ 99.40 for a 40
 # pip risk.  FAST MARKET.
-OpenTrade('USD/JY', 'SHORT', 9900, 9940),
+OpenTrade('USD/JY', 'SHORT', 9900, 9940, "2013-05-07T16:29:26"),
 # 2.  I have shorted GBP/USD @ 155.10 with protective stop @  155.60
-OpenTrade('GBP/USD', 'SHORT', 15510, 15560),
+OpenTrade('GBP/USD', 'SHORT', 15510, 15560, "2013-05-07T16:29:26"),
 # for a 50 pip risk.  FAST MARKET
 # Missed entry in gold - will attempt later.
 # John
@@ -54,24 +54,24 @@ OpenTrade('GBP/USD', 'SHORT', 15510, 15560),
 # TRADE ALERT
 # 1.  GOLD   I have bought (long) @ $1460 with stop @ $1450 for a 100
 # pip risk
-OpenTrade('GOLD', 'LONG', 14600, 14500),
+OpenTrade('GOLD', 'LONG', 14600, 14500, "2013-05-08T13:51:47"),
 # 2.  DOW  I have entered a stop order shorting @ 15,000.  If filled,
 # I will enter buy stop @ 15,060.
 # Charts in an upcoming FMT post this afternoon.
-# John 
+# John
 # ----------------------------------------------------
 # ----------------------------------------------------
 # TRADE ALERT
 # I have covered my shorts in
 # EUR/USD @ 1.3130
-CloseTrade('EUR/USD', 13130, 'ALL'),
+CloseTrade('EUR/USD', 13130, 'ALL', "2013-05-08T14:10:47"),
 # John
 # ----------------------------------------------------
 # ----------------------------------------------------
 # TRADE ALERT
 # JUNE T-BONDS
 # I have a new long trade @ 146.30 with protective stop @ 145.80 for a
-OpenTrade('JUNE T-BONDS', 'LONG', 14630, 14580),
+OpenTrade('JUNE T-BONDS', 'LONG', 14630, 14580, "2013-05-08T14:58:29"),
 # 50 pip risk.
 # John
 # ----------------------------------------------------
@@ -81,13 +81,13 @@ OpenTrade('JUNE T-BONDS', 'LONG', 14630, 14580),
 # filled)
 # 2.  DOW  I have just shorted Dow @ 15,100 with protective stop @
 # 15,160 for a 60 pip risk. My tramline is on the verge of being broken.
-OpenTrade('DOW', 'SHORT', 15100, 15160),
+OpenTrade('DOW', 'SHORT', 15100, 15160, "2013-05-09T08:52:52"),
 # 3.  ALCOA   has had a mighty good run and I am exiting at the open
 # today for A Account only.  This is a small contract, and so I have
-CloseTrade('ALCOA', 'OPEN', 'A'),
+CloseTrade('ALCOA', 'OPEN', 'A', "2013-05-09T08:52:52"),
 # bet five times my usual.  When you see the updated Trading Record,
 # you will see my bet @ 5  times the point move in pips. My entry was
-# at 8.38 on 29 April. 
+# at 8.38 on 29 April.
 # I will post a new FMT later this morning with charts.
 # John
 # ----------------------------------------------------
@@ -97,7 +97,7 @@ CloseTrade('ALCOA', 'OPEN', 'A'),
 # The move down looks very corrective, which places the odds towards a
 # new challenge of the 100 level.
 # I am going to reverse out of my short trade and then go long if the
-CloseTrade('USD/JY', 9894, 'ALL'),
+CloseTrade('USD/JY', 9894, 'ALL', "2013-05-09T09:52:44"),
 # market hits 99.00 (currently 98.84).
 # John
 # ----------------------------------------------------
@@ -114,7 +114,7 @@ CloseTrade('USD/JY', 9894, 'ALL'),
 # equities from positive to negative.
 # The Nikkei has formed patterns very similar to the Dow and S&P and
 # this morning, it has broken through the lower tramline after a big neg
-# mom div.  
+# mom div.
 # Will post a chart in my next FMT blog.
 # I hope this is a significant omen for the Dow.  Jobless Claims out
 # later today.
@@ -124,27 +124,27 @@ CloseTrade('USD/JY', 9894, 'ALL'),
 # ----------------------------------------------------
 # TRADE ALERT
 # 1.  GOLD.. I have moved my stop to break even
-MoveStop('GOLD', 'BREAK EVEN'),
+MoveStop('GOLD', 'BREAK EVEN', "2013-05-09T14:47:55"),
 # 2.  NIKKEI   I have just shorted Rolling Nikkei @ 14,190 with
 # protective stop @ 14,290 for a 100 pip risk.
-OpenTrade('NIKKEI', 'SHORT', 14190, 14290),
+OpenTrade('NIKKEI', 'SHORT', 14190, 14290, "2013-05-09T14:47:55"),
 # Nice updated Nikkei chart in next FMT post.
 # John
 # ----------------------------------------------------
 # ----------------------------------------------------
 # TRADES
 # 1.  I am now long USD/JY having reversed out of short @ 99.00
-OpenTrade('USD/JY', 'LONG', 9900, None),
+OpenTrade('USD/JY', 'LONG', 9900, None, "2013-05-09T15:37:22"),
 # 2.  Stopped out of long gold @ break even
-CloseTrade('GOLD', 'STOP', 'ALL'),
+CloseTrade('GOLD', 'STOP', 'ALL', "2013-05-09T15:37:22"),
 # 3.  I am moving my stop on short Dow to 15,120
-MoveStop('DOW', 15120),
+MoveStop('DOW', 15120, "2013-05-09T15:37:22"),
 # 4.  I am moving my stop on long T-Bonds to break-even.
-MoveStop('JUNE T-BONDS', 'BREAK EVEN'),
+MoveStop('JUNE T-BONDS', 'BREAK EVEN', "2013-05-09T15:37:22"),
 # 5.  Stopped out of short Nikkei @ 14,295
-CloseTrade('NIKKEI', 'STOP', 'ALL'),
+CloseTrade('NIKKEI', 'STOP', 'ALL', "2013-05-09T15:37:22"),
 # 6.  Exited Alcoa @  8.82  for A Account for big gain
-CloseTrade('ALCOA', 882, ['A']),
+CloseTrade('ALCOA', 882, ['A'], "2013-05-09T15:37:22"),
 # John
 # ----------------------------------------------------
 # ----------------------------------------------------
@@ -152,7 +152,7 @@ CloseTrade('ALCOA', 882, ['A']),
 # USD/JY
 # Now trading at 99.35.
 # I am entering protective stop @ 98.80
-MoveStop('USD/JY', 9880),
+MoveStop('USD/JY', 9880, "2013-05-09T15:48:05"),
 # John
 # ----------------------------------------------------
 # ----------------------------------------------------
@@ -160,7 +160,7 @@ MoveStop('USD/JY', 9880),
 
 # EUR/USD
 # I have just shorted EUR/USD @ 1.3060 with protective stop @ 1.3140 for
-OpenTrade('EUR/USD', 'SHORT', 13060, 13140),
+OpenTrade('EUR/USD', 'SHORT', 13060, 13140, "2013-05-09T20:24:25"),
 # an 80 pip risk.
 # Nice move on the USD/JY
 # John
@@ -169,17 +169,17 @@ OpenTrade('EUR/USD', 'SHORT', 13060, 13140),
 # TRADE ALERT
 # DOW
 # I have just shorted Dow @ 15,110 with protective stop : 15,160.
-OpenTrade('DOW', 'SHORT', 15110, 15160),
+OpenTrade('DOW', 'SHORT', 15110, 15160, "2013-05-09T20:47:24"),
 # John
 # ----------------------------------------------------
 # ----------------------------------------------------
 # TRADE ALERT
 # USD/JY
 # I have taken profit for A Account @ 1.0105
-CloseTrade('USD/JY', 10105, ['A']),
+CloseTrade('USD/JY', 10105, ['A'], "2013-05-10T08:20:58"),
 # JUNE T-BONDS
 # I have been stopped at break even.
-CloseTrade('JUNE T-BONDS', 'BREAK EVEN', 'ALL'),
+CloseTrade('JUNE T-BONDS', 'BREAK EVEN', 'ALL', "2013-05-10T08:20:58"),
 # John
 # ----------------------------------------------------
 # ----------------------------------------------------
@@ -188,8 +188,8 @@ CloseTrade('JUNE T-BONDS', 'BREAK EVEN', 'ALL'),
 # DOW
 # I have reversed from short to long at 15,110 with protective stop @
 # 15,060
-CloseTrade('DOW', 15110, 'ALL'),
-OpenTrade('DOW', 'LONG', 15110, 15060),
+CloseTrade('DOW', 15110, 'ALL', "2013-05-10T09:15:20"),
+OpenTrade('DOW', 'LONG', 15110, 15060, "2013-05-10T09:15:20"),
 # John
 # ----------------------------------------------------
 # ----------------------------------------------------
@@ -197,13 +197,13 @@ OpenTrade('DOW', 'LONG', 15110, 15060),
 # JUNE T-BONDS
 # I HAVE JUST GONE LONG JUNE T-BONDS @ 145.70 WITH PROTECTIVE STOP @
 # 145.20 FOR A 50 PIP RISK
-OpenTrade('JUNE T-BONDS', 'LONG', 14570, 14520),
+OpenTrade('JUNE T-BONDS', 'LONG', 14570, 14520, "2013-05-10T11:58:50"),
 # EUR/USD
 # I HAVE TAKEN PROFIT IN A ACCOUNT ON MY SHORT EUR/USD @ 1.3002
-CloseTrade('EUR/USD', 13002, ['A']),
+CloseTrade('EUR/USD', 13002, ['A'], "2013-05-10T11:58:50"),
 # AUS/USD
 # I HAVE TAKEN PROFIT IN A ACCOUNT IN SHORT AUS/USD @ 1.0025
-CloseTrade('AUS/USD', 10025, ['A']),
+CloseTrade('AUS/USD', 10025, ['A'], "2013-05-10T11:58:50"),
 # John
 # ----------------------------------------------------
 # ----------------------------------------------------
@@ -213,9 +213,9 @@ CloseTrade('AUS/USD', 10025, ['A']),
 # top is in.  It appears that way as I write.
 # TRADE  I have just shorted Dow @ 15,065 with protective stop @ 15,165
 # for a 100 pip risk.
-OpenTrade('DOW', 'SHORT', 15065, 15165),
+OpenTrade('DOW', 'SHORT', 15065, 15165, "2013-05-10T17:58:54"),
 # TRADE  I have exited all Alcoa positions @ 8.64
-CloseTrade('ALCOA', 864, 'ALL'),
+CloseTrade('ALCOA', 864, 'ALL', "2013-05-10T17:58:54"),
 # John
 # ----------------------------------------------------
 # ----------------------------------------------------
@@ -247,11 +247,11 @@ CloseTrade('ALCOA', 864, 'ALL'),
 # GOLD
 # Unable on yesterday's order, but I have just traded long @ $1438 with
 # protective stop @ $1428
-OpenTrade('GOLD', 'LONG', 14380, 14280),
+OpenTrade('GOLD', 'LONG', 14380, 14280, "2013-05-14T09:41:29"),
 # EUR/USD, AUS/USD
 # I have just moved protective stops to break-even
-MoveStop('EUR/USD', 'BREAK EVEN'),
-MoveStop('AUS/USD', 'BREAK EVEN'),
+MoveStop('EUR/USD', 'BREAK EVEN', "2013-05-14T09:41:29"),
+MoveStop('AUS/USD', 'BREAK EVEN', "2013-05-14T09:41:29"),
 # JUNE T-BONDS
 # I have just placed order to buy @ 145.00 on stop.  If filled, will
 # place protective stop @ 144.20 for an 80 pip risk.
@@ -266,35 +266,35 @@ MoveStop('AUS/USD', 'BREAK EVEN'),
 # TRADE ALERT
 # USD.JY
 # I have exited for B Account for 300 pip gain.
-CloseTrade('USD/JY', None, ['B'], pl=300),
+CloseTrade('USD/JY', None, ['B'], pl=300, "2013-05-14T17:14:26"),
 # John
 # ----------------------------------------------------
 # ----------------------------------------------------
 # TRADE ALERT
 # USD/JY
 # I have exited my last remaining C Account position @ 1.0250
-CloseTrade('USD/JY', 10250, ['C']),
+CloseTrade('USD/JY', 10250, ['C'], "2013-05-15T14:45:49"),
 # DOW
 # I have entered a sell stop shorting Dow @  15,170.  If filled, my
 # protective stop is at 15, 220 for a 50 pip risk
 # GOLD
 # I have just gone long gold @ $1410 with protective stop @ $1404 for a
 # 60 pip risk.
-OpenTrade('GOLD', 'LONG', 14100, 14040),
+OpenTrade('GOLD', 'LONG', 14100, 14040, "2013-05-15T14:45:49"),
 # John
 # ----------------------------------------------------
 # ----------------------------------------------------
 # TRADE ALERT
 # APPLE
 # I have just gone long Apple @ 434.50 with protective stop @ 428 for a
-OpenTrade('APPLE', 'LONG', 43450, 42800),
+OpenTrade('APPLE', 'LONG', 43450, 42800, "2013-05-15T16:24:25"),
 # 65 pip stop.
 # John
 # ----------------------------------------------------
 # ----------------------------------------------------
 # TRADE ALERTSYesterday, I discovered that not all of my Trade Alerts
 # are arriving at your inbox in a timely way.  If you have experienced
-# any delay, please let me know. 
+# any delay, please let me know.
 # If you receive a delayed email, you will likely notice my trade prices
 # are different from that on your screen, but my entries and exits are
 # genuine!  It does take me a few moments to compose the Alert, and in
@@ -334,7 +334,7 @@ OpenTrade('APPLE', 'LONG', 43450, 42800),
 # ----------------------------------------------------
 # TRADE ALERTS
 # 1.  EUR/USD  I have covered shorts in all accounts @ 1.2860 on a
-CloseTrade('EUR/USD', 12860, 'ALL'),
+CloseTrade('EUR/USD', 12860, 'ALL', "2013-05-20T10:07:38"),
 # tramline break
 # 2.  USD/JY   I have set an order to short USD/JY @ 101.80 on stop.
 #  If filled, my stop will be at 102.60 for a 60 pip risk.
@@ -345,7 +345,7 @@ CloseTrade('EUR/USD', 12860, 'ALL'),
 # TRADE ALERT
 # EUR/GBP
 # I have just shorted EUR/GBP @ 0.8465 with protective stop @ 0.8490 for
-OpenTrade('EUR/GBP', 'SHORT', 8465, 8490),
+OpenTrade('EUR/GBP', 'SHORT', 8465, 8490, "2013-05-20T12:58:27"),
 # a 25 pip risk
 # Will have an update for FMT blog a little later.
 # John
@@ -355,7 +355,7 @@ OpenTrade('EUR/GBP', 'SHORT', 8465, 8490),
 # JUNE T-BONDS
 # I have just shorted June T-Bonds @ 143.40 with protective stop @
 # 144.20 for an 80 pip risk.
-OpenTrade('JUNE T-BONDS', 'SHORT', 14340, 14420), # todo: check
+OpenTrade('JUNE T-BONDS', 'SHORT', 14340, 14420, "2013-05-21T16:01:08"), # todo: check
 # The June expires in a few days and I will switch to the Sept when
 # available.
 # John
@@ -364,7 +364,7 @@ OpenTrade('JUNE T-BONDS', 'SHORT', 14340, 14420), # todo: check
 # TRADE ALERT
 # GOLD
 # I have just bought gold @ $1364.20 with protective stop @ 1354.20 for
-OpenTrade('GOLD', 'LONG', 136420, 135420),
+OpenTrade('GOLD', 'LONG', 136420, 135420, "2013-05-21T16:26:39"),
 # a 100 pip risk
 # John
 # ----------------------------------------------------
@@ -404,14 +404,14 @@ OpenTrade('GOLD', 'LONG', 136420, 135420),
 # TRADE ALERT
 # GOLD
 # I have moved protective stop to break even.
-MoveStop('GOLD', 'BREAK EVEN'),
+MoveStop('GOLD', 'BREAK EVEN', "2013-05-22T19:36:38"),
 # John
 # ----------------------------------------------------
 # ----------------------------------------------------
 # TRADE ALERT
 # DOW
 # I have just shorted Dow @ 15,255 with protective stop @ 15,480 for a
-OpenTrade('DOW', 'SHORT', 15255, 15480),
+OpenTrade('DOW', 'SHORT', 15255, 15480, "2013-05-22T20:19:32"),
 # 125 pip risk.
 # John
 # ----------------------------------------------------
@@ -425,13 +425,13 @@ OpenTrade('DOW', 'SHORT', 15255, 15480),
 # I have just shorted Barclays @ 322 with protective stop @ 332 for a
 # 100 pip risk.
 # John
-OpenTrade('BARCLAYS', 'SHORT', 3220, 3320),
+OpenTrade('BARCLAYS', 'SHORT', 3220, 3320, "2013-05-23T17:26:16"),
 # ----------------------------------------------------
 # ----------------------------------------------------
 # TRADE ALERT
 # DOW
 # I have moved protective stop to break even @ 15,355.
-MoveStop('DOW', 15355),
+MoveStop('DOW', 15355, "2013-05-23T17:26:16"),
 # John
 # ----------------------------------------------------
 # ----------------------------------------------------
@@ -449,11 +449,11 @@ MoveStop('DOW', 15355),
 # TRADE ALERTS
 # AUS/USDI have moved my protective stop on short AUS/USD in C Account
 # to 0.9680
-MoveStop('AUS/USD', 9680),
+MoveStop('AUS/USD', 9680, "2013-05-28T09:00:58"),
 # DOWI am stopped at break-even 15,355
-CloseTrade('DOW', 15355, 'ALL'),
+CloseTrade('DOW', 15355, 'ALL', "2013-05-28T09:00:58"),
 # USD/JYI have exited my short trade USD/JY @ 102.00 for a small loss.
-CloseTrade('USD/JY', 10200, 'ALL'),
+CloseTrade('USD/JY', 10200, 'ALL', "2013-05-28T09:00:58"),
 # CAC40In error, posted a trade in Trading Record.  There was no Trade
 # Alert.
 # John
@@ -468,10 +468,10 @@ CloseTrade('USD/JY', 10200, 'ALL'),
 # GBP/USD
 # I have just shorted GBP/USD @ 1.5065 with protective stop @ 1.51.65
 # for a 100 pip risk
-OpenTrade('GBP/USD', 'SHORT', 15065, 15165),
+OpenTrade('GBP/USD', 'SHORT', 15065, 15165, "2013-05-28T16:25:14"),
 # EUR/USD
 # I have just shorted EUR/USD @ 1.2875 with protective stop @ 1.2960 for
-OpenTrade('EUR/USD', 'SHORT', 12875, 12960),
+OpenTrade('EUR/USD', 'SHORT', 12875, 12960, "2013-05-28T16:25:14"),
 # a 85 pip risk
 # FMT update soon.
 # John
@@ -480,7 +480,7 @@ OpenTrade('EUR/USD', 'SHORT', 12875, 12960),
 # TRADE ALERT
 # GOLD
 # I have just gone long gold @ $1381 with protective stop @ $1374 for a
-OpenTrade('GOLD', 'LONG', 13810, 13740),
+OpenTrade('GOLD', 'LONG', 13810, 13740, "2013-05-28T17:03:25"),
 # 70 pip risk
 # Will update FMT later.
 # New post on US Dollar now online.
@@ -493,7 +493,7 @@ OpenTrade('GOLD', 'LONG', 13810, 13740),
 # to tramline.
 # I do not like this!
 # I have exited my long gold trade at $1382
-CloseTrade('GOLD', 13820, 'ALL'),
+CloseTrade('GOLD', 13820, 'ALL', "2013-05-28T21:13:43"),
 # John
 # ----------------------------------------------------
 # ----------------------------------------------------
@@ -501,10 +501,10 @@ CloseTrade('GOLD', 13820, 'ALL'),
 # DOW
 # I have just shorted Dow @ 15,298 with protective stop @ 15,420 foR A
 # 125 PIP RISK
-OpenTrade('DOW', 'SHORT', 15298, 15420),
+OpenTrade('DOW', 'SHORT', 15298, 15420, "2013-05-29T16:36:45"),
 # FTSE
 # I have just shorted FTSE @ 6648 with proetctive stop @ 6740 for  92
-OpenTrade('FTSE', 'SHORT', 6648, 6740),
+OpenTrade('FTSE', 'SHORT', 6648, 6740, "2013-05-29T16:36:45"),
 # PIP RISK
 # John
 # ----------------------------------------------------
@@ -514,7 +514,7 @@ OpenTrade('FTSE', 'SHORT', 6648, 6740),
 # A very annoying market!  It is now moving up above the critical $1400
 # level taking out many buy stops
 # I have just gone long gold @ $1405 with protective stop @ $1385 for a
-OpenTrade('GOLD', 'LONG', 14050, 13850),
+OpenTrade('GOLD', 'LONG', 14050, 13850, "2013-05-30T08:19:08"),
 # 200 pip risk, slightly higher than I normally like.
 # Will have MC later this morning with my analysis and charts of Dow,
 # FTSE and Gold.
@@ -524,7 +524,7 @@ OpenTrade('GOLD', 'LONG', 14050, 13850),
 # TRADE ALERT
 # CAC-40
 # I have just shorted CAC 40 @ 3,942 with protective stop @ 3980 for a
-OpenTrade('CAC 40', 'SHORT', 3942, 3980),
+OpenTrade('CAC 40', 'SHORT', 3942, 3980, "2013-05-31T20:47:35"),
 # 38 pip risk.  And I bet three times normal because of small size.
 # I have a feeling we will open weak on Monday in all stock indexes.
 # Full charts and analysis in tomorrows WR.
@@ -534,7 +534,7 @@ OpenTrade('CAC 40', 'SHORT', 3942, 3980),
 # TRADE ALERT
 # EUR/USD
 # I have just shorted EUR/USD @ 1.3020 with protective stop @ 1.3070 for
-OpenTrade('EUR/USD', 'SHORT', 13020, 13070),
+OpenTrade('EUR/USD', 'SHORT', 13020, 13070, "2013-06-03T12:32:41"),
 # a 50 pip risk.
 # John
 # ----------------------------------------------------
@@ -542,22 +542,22 @@ OpenTrade('EUR/USD', 'SHORT', 13020, 13070),
 # TRADE ALERT
 # SEPT T-BONDS (30 YR)
 # I have just bought Sept T-Bonds @ 140.80 with protective stop @ 139.80
-OpenTrade('SEPT T-BONDS', 'LONG', 14080, 13980),
+OpenTrade('SEPT T-BONDS', 'LONG', 14080, 13980, "2013-06-03T16:45:49"),
 # John
 # ----------------------------------------------------
 # ----------------------------------------------------
 # TRADE ALERT
 # EUR/USD
-# Was going well and rebounded closer to my tramline.  
+# Was going well and rebounded closer to my tramline.
 # I have exited the short EUR/USD @ 1.3020 at entry price.
-CloseTrade('EUR/USD', 13020, 'ALL'),
+CloseTrade('EUR/USD', 13020, 'ALL', "2013-06-03T16:50:28"),
 # John
 # ----------------------------------------------------
 # ----------------------------------------------------
 # TRADE ALERT
 # EUR/USD
 # I have just shorted EUR/USD @ 1.3050 with protective stop @ 1.3120 for
-OpenTrade('EUR/USD', 'SHORT', 13050, 13120),
+OpenTrade('EUR/USD', 'SHORT', 13050, 13120, "2013-06-04T16:23:44"),
 # a 70 pip risk
 # John
 # ----------------------------------------------------
@@ -566,20 +566,20 @@ OpenTrade('EUR/USD', 'SHORT', 13050, 13120),
 # SEPT T-BONDS (30 YR)
 # I have just gone long Sept T-Bonds @ 140.20 with protective stop @
 # 139.50 for a 70 pip risk.
-OpenTrade('SEPT T-BONDS', 'LONG', 14020, 13950),
+OpenTrade('SEPT T-BONDS', 'LONG', 14020, 13950, "2013-06-05T12:35:01"),
 # John
 # ----------------------------------------------------
 # ----------------------------------------------------
 # TRADE ALERT
 # DOW
 # I have just taken profit for A ACCOUNT only on my short Dow @ 15,000
-CloseTrade('DOW', 15000, ['A']),
+CloseTrade('DOW', 15000, ['A'], "2013-06-06T07:46:25"),
 # FTSE
 # I have just taken profit for A ACCOUNT only on my short FTSE @  6410
-CloseTrade('FTSE', 6410, ['A']),
+CloseTrade('FTSE', 6410, ['A'], "2013-06-06T07:46:25"),
 # SEPT T-BONDS
 # I have moved my stop to break even @ 140.20
-MoveStop('SEPT T-BONDS', 14020),
+MoveStop('SEPT T-BONDS', 14020, "2013-06-06T07:46:25"),
 # John
 # ----------------------------------------------------
 # ----------------------------------------------------
@@ -601,7 +601,7 @@ MoveStop('SEPT T-BONDS', 14020),
 # TRADE ALERT
 # EUR/USD
 # I have just shorted EUR/USD @ 1.3225 with protective stop @ 1.3260 for
-OpenTrade('EUR/USD', 'SHORT', 13225, 13260),
+OpenTrade('EUR/USD', 'SHORT', 13225, 13260, "2013-06-07T14:51:36"),
 # a 55 pip risk.
 # John
 # ----------------------------------------------------
@@ -609,11 +609,11 @@ OpenTrade('EUR/USD', 'SHORT', 13225, 13260),
 # TRADE ALERT
 # DOW AND FTSE
 # I am moving protective stops on shorts to 15,298 and 6648 resp.
-MoveStop('DOW', 15298),
-MoveStop('FTSE', 6648),
+MoveStop('DOW', 15298, "2013-06-07T16:10:56"),
+MoveStop('FTSE', 6648, "2013-06-07T16:10:56"),
 # USD/JY
 # I have just gone long USD/JY @ 97.20 with protective stop @ 96.20 for
-OpenTrade('USD/JY', 'LONG', 9720, 9620),
+OpenTrade('USD/JY', 'LONG', 9720, 9620, "2013-06-07T16:10:56"),
 # a 100 pip risk.
 # John
 # ----------------------------------------------------
@@ -621,22 +621,22 @@ OpenTrade('USD/JY', 'LONG', 9720, 9620),
 # TRADE ALERT
 # EUR/USD
 # I have just shorted EUR/USD @ 1.3250 with protective stop @ 1.3290 for
-OpenTrade('EUR/USD', 'SHORT', 13250, 13290),
+OpenTrade('EUR/USD', 'SHORT', 13250, 13290, "2013-06-11T14:41:55"),
 # a 40 pip risk
 # GBP/USD
 # I have just shorted GBP/USD @ 1.5530 with protective stop @ 1.5580 for
-OpenTrade('GBP/USD', 'SHORT', 15530, 15580),
+OpenTrade('GBP/USD', 'SHORT', 15530, 15580, "2013-06-11T14:41:55"),
 # a 50 pip risk.
 # John
 # ----------------------------------------------------
 # ----------------------------------------------------
 # FTSE
 # I have taken profit for B ACCOUNT ONLY on my short FTSE @ 6,300
-CloseTrade('FTSE', 6300, ['B']),
+CloseTrade('FTSE', 6300, ['B'], "2013-06-11T16:37:39"),
 # BARCLAYS
 # I have taken profit for A ACCOUNT ONLY on the first Barclays trade @
 # 300
-CloseTrade('BARCLAYS', 3000, ['A']), #todo: check which trade
+CloseTrade('BARCLAYS', 3000, ['A'], "2013-06-11T16:37:39"), #todo: check which trade
 
 # John
 # ----------------------------------------------------
@@ -644,22 +644,22 @@ CloseTrade('BARCLAYS', 3000, ['A']), #todo: check which trade
 # TRADE ALERT
 # GOLD
 # I have just gone long Gold @ 1379 with protective stop @ 1372 for a 70
-OpenTrade('GOLD', 'LONG', 13790, 13720),
+OpenTrade('GOLD', 'LONG', 13790, 13720, "2013-06-11T20:51:55"),
 # pip risk.
-# John 
+# John
 # ----------------------------------------------------
 # ----------------------------------------------------
 # TRADE ALERT
 # DOW
 # I have just shorted the Dow @ 15,125 with protective stop @ 15,225
-OpenTrade('DOW', 'SHORT', 15125, 15225),
+OpenTrade('DOW', 'SHORT', 15125, 15225, "2013-06-12T16:55:18"),
 # John
 # ----------------------------------------------------
 # ----------------------------------------------------
 # TRADE ALERT
 # EUR/USD
 # I have just shorted EUR/USD @ 1.3325 with protective stop @ 1.3365 for
-OpenTrade('EUR/USD', 'SHORT', 13325, 13365),
+OpenTrade('EUR/USD', 'SHORT', 13325, 13365, "2013-06-12T17:06:42"),
 # a 40 pip risk
 # John
 # ----------------------------------------------------
@@ -668,14 +668,14 @@ OpenTrade('EUR/USD', 'SHORT', 13325, 13365),
 # SEPT T-BONDS 30-YR
 # I have just gone long Sept T-Bonds @ 139.60 with protective stop @
 # 138.80 for an 80 pip risk.
-OpenTrade('SEPT T-BONDS', 'LONG', 13960, 13860),
+OpenTrade('SEPT T-BONDS', 'LONG', 13960, 13860, "2013-06-13T09:14:07"),
 # John
 # ----------------------------------------------------
 # ----------------------------------------------------
 # TRADE ALERT
 # EUR/USD
 # I have just shorted EUR/USD @ 1.3320 with protective stop @ 1.3380 for
-OpenTrade('EUR/USD', 'SHORT', 13320, 13380),
+OpenTrade('EUR/USD', 'SHORT', 13320, 13380, "2013-06-13T13:56:28"),
 # a 60 pip risk.
 # John
 # ----------------------------------------------------
@@ -683,21 +683,21 @@ OpenTrade('EUR/USD', 'SHORT', 13320, 13380),
 # TRADE ALERT
 # GOLD
 # I have just exited my long trade at break-even 1380.
-CloseTrade('GOLD', 13800, 'ALL'),
+CloseTrade('GOLD', 13800, 'ALL', "2013-06-13T15:04:55"),
 # John
 # ----------------------------------------------------
 # ----------------------------------------------------
 # TRADE ALERT
 # DOW
 # I have moved my stop on short Dow trade to break even @ 15,125
-MoveStop('DOW', 15125),
+MoveStop('DOW', 15125, "2013-06-13T20:04:42"),
 # John
 # ----------------------------------------------------
 # ----------------------------------------------------
 # TRADE ALERT
 # GOLD
 # I have just gone long gold @ 1386 with protective stop @ 1378 for an
-OpenTrade('GOLD', 'LONG', 13860, 13780),
+OpenTrade('GOLD', 'LONG', 13860, 13780, "2013-06-14T14:39:06"),
 # 80 pip risk.
 # John
 # ----------------------------------------------------
@@ -714,18 +714,18 @@ OpenTrade('GOLD', 'LONG', 13860, 13780),
 # NIKKEI
 # I have just gone long Rolling Nikkei @ 12,800 with protective stop @
 # 12,700 for a 100 pip risk
-OpenTrade('NIKKEI', 'LONG', 12800, 12700),
+OpenTrade('NIKKEI', 'LONG', 12800, 12700, "2013-06-14T16:14:58"),
 # John
 # ----------------------------------------------------
 # ----------------------------------------------------
 # TRADE ALERTS
 # I have moved protective stops on these trades to break-even:
 # 1.  Long Sept T-Bonds to 139.60
-MoveStop('SEPT T-BONDS', 13960),
+MoveStop('SEPT T-BONDS', 13960, "2013-06-17T08:43:10"),
 # 2.  Long Gold to 1386
-MoveStop('GOLD', 13860),
+MoveStop('GOLD', 13860, "2013-06-17T08:43:10"),
 # I have also taken profit for C Account in short FTSE @ 6,335
-CloseTrade('FTSE', 6335, ['C']),
+CloseTrade('FTSE', 6335, ['C'], "2013-06-17T08:43:10"),
 # John
 # ----------------------------------------------------
 # ----------------------------------------------------
@@ -734,7 +734,7 @@ CloseTrade('FTSE', 6335, ['C']),
 
 # I have cancelled my  order to go long USD/JY @ 95.50 stop and now I
 # have gone long @ 95.00 with protective stop @ 93.95 for a 105 pip
-OpenTrade('USD/JY', 'LONG', 9500, 9395),
+OpenTrade('USD/JY', 'LONG', 9500, 9395, "2013-06-17T08:54:07"),
 # risk.
 # John
 # ----------------------------------------------------
@@ -742,14 +742,14 @@ OpenTrade('USD/JY', 'LONG', 9500, 9395),
 # TRADE ALERT
 # USD/JY
 # I have just taken profit for A ACCOUNT ONLY on long USD/JY @ 97.95.
-CloseTrade('USD/JY', 9795, ['A']),
+CloseTrade('USD/JY', 9795, ['A'], "2013-06-20T13:01:51"),
 # John
 # ----------------------------------------------------
 # ----------------------------------------------------
 # TRADE ALERT
 # EUR/USD
 # I have just shorted EUR/USD @ 1.3190 with protective stop @ 1.3290 for
-OpenTrade('EUR/USD', 'SHORT', 13190, 13290),
+OpenTrade('EUR/USD', 'SHORT', 13190, 13290, "2013-06-20T16:01:25"),
 # a 100 pip risk.
 # John
 # ----------------------------------------------------
@@ -757,14 +757,14 @@ OpenTrade('EUR/USD', 'SHORT', 13190, 13290),
 # TRADE ALERT
 # FTSE
 # I have just shorted FTSE @ 6,180 with protective stop @ 6,280 for a
-OpenTrade('FTSE', 'SHORT', 6180, 6280),
+OpenTrade('FTSE', 'SHORT', 6180, 6280, "2013-06-20T16:29:08"),
 # 100 pip risk.
 # John
 # ----------------------------------------------------
 # ----------------------------------------------------
 # TRADE ALERT
 # I have just shorted Dow @ 14,770 with protective stop @ 14,950 for a
-OpenTrade('DOW', 'SHORT', 14770, 14950),
+OpenTrade('DOW', 'SHORT', 14770, 14950, "2013-06-20T21:22:50"),
 # 180 pip risk.
 # John
 # ----------------------------------------------------
@@ -773,21 +773,21 @@ OpenTrade('DOW', 'SHORT', 14770, 14950),
 # SEPT T-BONDS 30 YR
 # I gave just gone long Sept T-Bonds @ 136.00 with protective stop @
 # 135.50 for a 50 pip risk.
-OpenTrade('SEPT T-BONDS', 'LONG', 13600, 13550),
+OpenTrade('SEPT T-BONDS', 'LONG', 13600, 13550, "2013-06-21T15:57:37"),
 # John
 # ----------------------------------------------------
 # ----------------------------------------------------
 # TRADE ALERT
 # 1.  I have just exited short Barclays for A ACCOUNT ON THE SECOND
 # TRADE from June 6 @ 283
-CloseTrade('BARCLAYS', 2830, ['A']), # todo find correct trade
+CloseTrade('BARCLAYS', 2830, ['A'], "2013-06-24T09:30:20"), # todo find correct trade
 # 2.  Also exited short Barclays for B ACCOUNT ON FIRST TRADE from May
 # 23 @ 283
-CloseTrade('BARCLAYS', 2830, ['B']),
+CloseTrade('BARCLAYS', 2830, ['B'], "2013-06-24T09:30:20"),
 # 3.  I have just exited long USD/JY for B Account @ 98.30
-CloseTrade('USD/JY', 9830, ['B']),
+CloseTrade('USD/JY', 9830, ['B'], "2013-06-24T09:30:20"),
 # 4.  I have just gone long Gold @ 1,283 with protective stop @ 1,273
-OpenTrade('GOLD', 'LONG', 1283, 1273),
+OpenTrade('GOLD', 'LONG', 1283, 1273, "2013-06-24T09:30:20"),
 # for a 100 pip risk
 # John
 # ----------------------------------------------------
@@ -796,23 +796,23 @@ OpenTrade('GOLD', 'LONG', 1283, 1273),
 # SEPT T-BONDS
 # I have just gone long Sept T-Bonds @ 13420 with protective stop @
 # 133.50 for a 70 pip risk.
-OpenTrade('SEPT T-BONDS', 'LONG', 13420, 13350),
+OpenTrade('SEPT T-BONDS', 'LONG', 13420, 13350, "2013-06-24T17:41:44"),
 # John
 # ----------------------------------------------------
 # ----------------------------------------------------
 # TRADE ALERT
 # SEPT T-BONDS
 # I have taken profit on long Sept T-Bonds for A ACCOUNT @ 135.30 and
-CloseTrade('SEPT T-BONDS', 13530, ['A']),
+CloseTrade('SEPT T-BONDS', 13530, ['A'], "2013-06-25T14:25:47"),
 # moved stops for B and C Accounts to break even
-MoveStop('SEPT T-BONDS', 'BREAK EVEN'),
+MoveStop('SEPT T-BONDS', 'BREAK EVEN', "2013-06-25T14:25:47"),
 # John
 # ----------------------------------------------------
 # ----------------------------------------------------
 # TRADE ALERT
 # GBP/USD
 # I have just shorted GBP/USD @ 1.5440 with protective stop @ 1.5480 for
-OpenTrade('GBP/USD', 'SHORT', 15440, 15480),
+OpenTrade('GBP/USD', 'SHORT', 15440, 15480, "2013-06-25T14:51:31"),
 # a 50 pip risk.
 # John
 # ----------------------------------------------------
@@ -821,21 +821,21 @@ OpenTrade('GBP/USD', 'SHORT', 15440, 15480),
 # SEPT T-BONDS
 # I have just gone long Sept T-Bonds @ 13445 with protective stop @
 # 134.00 for a 45 pip risk.
-OpenTrade('SEPT T-BONDS', 'LONG', 13445, 13400),
+OpenTrade('SEPT T-BONDS', 'LONG', 13445, 13400, "2013-06-26T14:02:32"),
 # John
 # ----------------------------------------------------
 # ----------------------------------------------------
 # TRADE ALERTS
 # GOLD
 # I have just gone long Gold @ 1241 with protective stop @ 1231 for a
-OpenTrade('GOLD', 'LONG', 12410, 12310),
+OpenTrade('GOLD', 'LONG', 12410, 12310, "2013-06-27T08:47:06"),
 # 100 pip risk
 # EUR/USD
 # I have moved protective stop on short trade to break even @ 1.3190
-MoveStop('EUR/USD', 13190),
+MoveStop('EUR/USD', 13190, "2013-06-27T08:47:06"),
 # GBP/USD
 # I have moved protective stop on short trade to break even @ 1.5440
-MoveStop('GBP/USD', 15440),
+MoveStop('GBP/USD', 15440, "2013-06-27T08:47:06"),
 # John
 # ----------------------------------------------------
 # ----------------------------------------------------
@@ -843,22 +843,22 @@ MoveStop('GBP/USD', 15440),
 # EUR/USD,  GBP/USD
 # I have just taken profits for A Account on short EUR/USD @ 1.3030 and
 # short GBP/USD @ 1.5320
-CloseTrade('EUR/USD', 13030, ['A']),
-CloseTrade('GBP/USD', 15320, ['A']),
+CloseTrade('EUR/USD', 13030, ['A'], "2013-06-27T09:55:35"),
+CloseTrade('GBP/USD', 15320, ['A'], "2013-06-27T09:55:35"),
 # John
 # ----------------------------------------------------
 # ----------------------------------------------------
 # TRADE ALERT
 # EUR/USD
 # I have just taken profit for B ACCOUNT on short EUR/USD @ 1.3045.
-CloseTrade('EUR/USD', 13045, ['B']),
+CloseTrade('EUR/USD', 13045, ['B'], "2013-06-28T10:13:05"),
 # John
 # ----------------------------------------------------
 # ----------------------------------------------------
 # TRADE ALERT
 # EUR/USD
 # I have just exited for C Account my short EUR/USD @ 1.3070
-CloseTrade('EUR/USD', 13070, ['C']),
+CloseTrade('EUR/USD', 13070, ['C'], "2013-06-28T14:10:19"),
 # GBP/USD
 # I have just exited for B Account my short GBP/USD @ 1.5250
 # John
@@ -867,10 +867,10 @@ CloseTrade('EUR/USD', 13070, ['C']),
 # TRADE ALERT
 # SEPT T-BONDS
 # I have just exited all long Sept T-Bonds for all accounts @ 135.50
-CloseTrade('SEPT T-BONDS', 13550, 'ALL'),
+CloseTrade('SEPT T-BONDS', 13550, 'ALL', "2013-06-28T14:52:03"),
 # DOW
 # I have just shorted Dow @ 15,000 with protective stop @ 15060 for 60
-OpenTrade('DOW', 'SHORT', 15000, 15060),
+OpenTrade('DOW', 'SHORT', 15000, 15060, "2013-06-28T14:52:03"),
 # pip risk
 # John
 # ----------------------------------------------------
@@ -878,7 +878,7 @@ OpenTrade('DOW', 'SHORT', 15000, 15060),
 # TRADE ALERT
 # GBP/USD
 # I have just gone long GBP/USD @ 1.5245 with protective stop @ 1.5220
-OpenTrade('GBP/USD', 'LONG', 15245, 15220),
+OpenTrade('GBP/USD', 'LONG', 15245, 15220, "2013-06-28T15:00:09"),
 # for a 25 pip risk.
 # John
 # ----------------------------------------------------
@@ -886,7 +886,7 @@ OpenTrade('GBP/USD', 'LONG', 15245, 15220),
 # TRADE ALERT
 # GOLD
 # I have just gone long gold @ 1211 with protective stop @ 1198 for a
-OpenTrade('GOLD', 'LONG', 12110, 11980),
+OpenTrade('GOLD', 'LONG', 12110, 11980, "2013-06-28T17:03:07"),
 # 130 pip risk.
 # John
 # ----------------------------------------------------
@@ -894,14 +894,14 @@ OpenTrade('GOLD', 'LONG', 12110, 11980),
 # TRADE ALERT
 # GOLD
 # I have just taken profit for A ACCOUNT on long Gold @ 1246
-CloseTrade('GOLD', 12460, ['A']),
+CloseTrade('GOLD', 12460, ['A'], "2013-07-01T09:03:55"),
 # John
 # ----------------------------------------------------
 # ----------------------------------------------------
 # TRADE ALERT
 # GBP/USD
 # I have just gone long GBP/USD @ 1.5210 with protective stop @ 1,5160
-OpenTrade('GBP/USD', 'LONG', 15210, 15160),
+OpenTrade('GBP/USD', 'LONG', 15210, 15160, "2013-07-01T09:39:03"),
 # for a 50 pip risk.
 # John
 # ----------------------------------------------------
@@ -910,7 +910,7 @@ OpenTrade('GBP/USD', 'LONG', 15210, 15160),
 # BARCLAYS
 # I have just taken profit for B ACCOUNT on short from June 8 trade @
 # 285
-CloseTrade('BARCLAYS', 2850, ['B']),
+CloseTrade('BARCLAYS', 2850, ['B'], "2013-07-01T17:55:57"),
 # This means I have only the two C Account positions open
 # John
 # ----------------------------------------------------
@@ -918,7 +918,7 @@ CloseTrade('BARCLAYS', 2850, ['B']),
 # TRADE ALERT
 # GOLD
 # I have just taken profit for B ACCOUNT On long Gold @ $1254
-CloseTrade('GOLD', 12540, ['B']),
+CloseTrade('GOLD', 12540, ['B'], "2013-07-01T20:05:19"),
 # John
 # ----------------------------------------------------
 # ----------------------------------------------------
@@ -933,13 +933,13 @@ CloseTrade('GOLD', 12540, ['B']),
 
 # http://www.aweber.com/z/c/?yjxs7y03bxlb2dqbua2hp2db2tty036mg=861
 
-# Click the link above to give us permission to send you 
-# information.  It's fast and easy!  If you cannot click the 
-# full URL above, please copy and paste it into your web 
+# Click the link above to give us permission to send you
+# information.  It's fast and easy!  If you cannot click the
+# full URL above, please copy and paste it into your web
 # browser.
 
 # -----------------------------------------------------------
-# If you do not want to confirm, simply ignore this message. 
+# If you do not want to confirm, simply ignore this message.
 
 # Thank you,
 # Tramline Traders
@@ -1074,7 +1074,7 @@ CloseTrade('GOLD', 12540, ['B']),
 # GOLD
 # I have a long trade working in C ACCOUNT from $1211 June 28 and I have
 # now exited this position @ $1285.0
-CloseTrade('GOLD', 12850, ['C']),
+CloseTrade('GOLD', 12850, ['C'], "2013-07-02T19:47:07"),
 # John
 # ----------------------------------------------------
 # ----------------------------------------------------
@@ -1082,7 +1082,7 @@ CloseTrade('GOLD', 12850, ['C']),
 # USD/JY
 # I have just exited for C ACCOUNT my long USD/JY trade taken at 95.00
 # at 99.00
-CloseTrade('USD/JY', 9500, ['C']),
+CloseTrade('USD/JY', 9500, ['C'], "2013-07-11T14:50:41"),
 
 # John
 # ----------------------------------------------------
@@ -1091,7 +1091,7 @@ CloseTrade('USD/JY', 9500, ['C']),
 # SEPT T-BONDS
 # I have just shorted Sept T-Bonds @ 134.80 with protective stop @
 # 135.40 for A 60 PIP RISK.
-OpenTrade('SEPT T-BONDS', 'SHORT', 13480, 13540),
+OpenTrade('SEPT T-BONDS', 'SHORT', 13480, 13540, "2013-07-12T16:03:36"),
 # John
 # ----------------------------------------------------
 # ----------------------------------------------------
@@ -1099,14 +1099,14 @@ OpenTrade('SEPT T-BONDS', 'SHORT', 13480, 13540),
 # DOW
 # I have just shorted Dow @ 15,430 with protective stop @ 15,490 for a
 # 60 pip risk
-OpenTrade('DOW', 'SHORT', 15430, 15490),
+OpenTrade('DOW', 'SHORT', 15430, 15490, "2013-07-12T16:30:37"),
 # John
 # ----------------------------------------------------
 # ----------------------------------------------------
 # TRADE ALERT
 # SEPT T-BONDS
 # I have moved my stop to break even on short Sept T-Bonds to 134.80
-MoveStop('SEPT T-BONDS', 13480),
+MoveStop('SEPT T-BONDS', 13480, "2013-07-12T20:12:21"),
 # John
 # ----------------------------------------------------
 # ----------------------------------------------------
@@ -1114,10 +1114,10 @@ MoveStop('SEPT T-BONDS', 13480),
 # USD/JY
 # I have just shorted USD/JY @ 99.40 with protective stop @ 99.75 for a
 # 35 pip risk.
-OpenTrade('USD/JY', 'SHORT', 9940, 9975),
+OpenTrade('USD/JY', 'SHORT', 9940, 9975, "2013-07-15T15:58:09"),
 # FTSE
 # I have just shorted FTSE @ 6570 with protective stop @ 6610 for a 40
-OpenTrade('FTSE', 'SHORT', 6570, 6610),
+OpenTrade('FTSE', 'SHORT', 6570, 6610, "2013-07-15T15:58:09"),
 # pip risk
 # John
 # ----------------------------------------------------
@@ -1125,11 +1125,11 @@ OpenTrade('FTSE', 'SHORT', 6570, 6610),
 # TRADE ALERT
 # EUR/USD
 # I have just shorted EUR/USD @ 1.3100 with protective stop @ 1.3195 for
-OpenTrade('EUR/USD', 'SHORT', 13100, 13195),
+OpenTrade('EUR/USD', 'SHORT', 13100, 13195, "2013-07-16T16:57:12"),
 # a 100 pip risk.
 # GOLD
 # I have just shorted Gold @ $1282 with protective stop @ $1302 for a
-OpenTrade('GOLD', 'SHORT', 12820, 13020),
+OpenTrade('GOLD', 'SHORT', 12820, 13020, "2013-07-16T16:57:12"),
 # 200 pip risk.
 # John
 # ----------------------------------------------------
@@ -1138,7 +1138,7 @@ OpenTrade('GOLD', 'SHORT', 12820, 13020),
 # SEPT T-BONDS
 # I have just shorted Sept T-Bonds @ 135.10 with protective stop @
 # 135.70 for a 60 pip risk.
-OpenTrade('SEPT T-BONDS', 'SHORT', 13510, 13570),
+OpenTrade('SEPT T-BONDS', 'SHORT', 13510, 13570, "2013-07-17T16:55:26"),
 # John
 # ----------------------------------------------------
 # ----------------------------------------------------
@@ -1146,9 +1146,9 @@ OpenTrade('SEPT T-BONDS', 'SHORT', 13510, 13570),
 # NASDAQ (0.1) ROLLING
 # I have just shorted Nasdaq @ 3050 with protective stop @ 3060
 # DOW
-OpenTrade('NASDAQ', 'SHORT', 30500, 30600),
+OpenTrade('NASDAQ', 'SHORT', 30500, 30600, "2013-07-18T15:01:12"),
 # I have just shorted Dow @ 15,580 with protective stop @ 15,610
-OpenTrade('DOW', 'SHORT', 15580, 15610),
+OpenTrade('DOW', 'SHORT', 15580, 15610, "2013-07-18T15:01:12"),
 # John
 
 # ----------------------------------------------------
@@ -1168,7 +1168,7 @@ OpenTrade('DOW', 'SHORT', 15580, 15610),
 # TRADE ALERT
 # EUR/USD
 # I have just shorted GBP/USD @ 1.1.5320 with protective stop @ 1.1.5420
-OpenTrade('GBP/USD', 'SHORT', 115320, 115420),
+OpenTrade('GBP/USD', 'SHORT', 115320, 115420, "2013-07-24T20:07:28"),
 # for a 100 pip risk.
 # John
 # ----------------------------------------------------
@@ -1176,7 +1176,7 @@ OpenTrade('GBP/USD', 'SHORT', 115320, 115420),
 # TRADE ALERT
 # FTSE
 # I have just shorted FTSE @ 6,595 with protective stop @ 6,640 for a 45
-OpenTrade('FTSE', 'SHORT', 6595, 6640),
+OpenTrade('FTSE', 'SHORT', 6595, 6640, "2013-07-25T14:58:33"),
 # pip risk.
 # John
 # ----------------------------------------------------
@@ -1184,7 +1184,7 @@ OpenTrade('FTSE', 'SHORT', 6595, 6640),
 # TRADE ALERT
 # DOW
 # I have just shorted Dow @ 15,520 with protective stop @ 15,580 for a
-OpenTrade('DOW', 'SHORT', 15520, 15580),
+OpenTrade('DOW', 'SHORT', 15520, 15580, "2013-07-25T16:36:43"),
 # 60 pip risk
 # John
 # ----------------------------------------------------
@@ -1193,23 +1193,23 @@ OpenTrade('DOW', 'SHORT', 15520, 15580),
 # USD/CHF (SWISSIE)
 # I have just gone long USD/CHF @ 0.9290 with protective stop @ 0.9250
 # for a 40 pip risk.
-OpenTrade('USD/CHF', 'LONG', 9290, 9250),
+OpenTrade('USD/CHF', 'LONG', 9290, 9250, "2013-07-26T11:42:15"),
 # GBP/USD
 # I have just gone short GBP/USD @ 1.5380 with protective stop @
 #  1.5410 for a 30 pip risk.
-OpenTrade('GBP/USD', 'SHORT', 15380, 15410),
+OpenTrade('GBP/USD', 'SHORT', 15380, 15410, "2013-07-26T11:42:15"),
 # John
 # ----------------------------------------------------
 # ----------------------------------------------------
 # TRADE ALERT
 # EUR/USD
 # I have just shorted EUR/USD @ 1.3265 with protective stop @ 1.3310 for
-OpenTrade('EUR/USD', 'SHORT', 13265, 13310),
+OpenTrade('EUR/USD', 'SHORT', 13265, 13310, "2013-07-29T08:44:02"),
 # a 45 pip risk
 # GBP/USD
 # I have just re-instated short GBP/USD @ 1.5380 with protective stop @
 # 1.5420 for a 40 pip risk
-OpenTrade('GBP/USD', 'SHORT', 15380, 15420),
+OpenTrade('GBP/USD', 'SHORT', 15380, 15420, "2013-07-29T08:44:02"),
 # John
 # ----------------------------------------------------
 # ----------------------------------------------------
@@ -1219,27 +1219,27 @@ OpenTrade('GBP/USD', 'SHORT', 15380, 15420),
 # I have just gone long USD/CAD @ 1.0280 with protective stop @ 1.0240
 # for a 40 pip risk.
 # John
-OpenTrade('USD/CAD', 'LONG', 10280, 10240),
+OpenTrade('USD/CAD', 'LONG', 10280, 10240, "2013-07-30T08:52:29"),
 # ----------------------------------------------------
 # ----------------------------------------------------
 # TRADE ALERT
 # NIKKEI
 # I have just gone long Nikkei 225 (USD) @ 13.700 with protective stop @
 # 13,620 for 80 pip risk.
-OpenTrade('NIKKEI', 'LONG', 13700, 13620),
+OpenTrade('NIKKEI', 'LONG', 13700, 13620, "2013-07-30T08:52:29"),
 # John
 # ----------------------------------------------------
 # ----------------------------------------------------
 # TRADE ALERT
 # GBP/USD
 # I have just covered for A ACCOUNT my short GBP/USD @ 1.5200
-CloseTrade('GBP/USD', 15200, ['A']),
+CloseTrade('GBP/USD', 15200, ['A'], "2013-07-30T20:33:04"),
 # John
 # ----------------------------------------------------
 # ----------------------------------------------------
 # TRADE ALERT
 # GOLDi have just shorted gold @ $1,310 with protective stop @ $1,325
-OpenTrade('GOLD', 'SHORT', 13100, 13250),
+OpenTrade('GOLD', 'SHORT', 13100, 13250, "2013-07-31T13:22:25"),
 # for a 150 pip risk.
 # John
 # ----------------------------------------------------
@@ -1249,25 +1249,25 @@ OpenTrade('GOLD', 'SHORT', 13100, 13250),
 # I have just gone long USD/CHF @ 0.9287 with protective stop @ 0.9240
 # for a 47 pip risk.
 # John
-OpenTrade('USD/CHF', 'LONG', 9287, 9240),
+OpenTrade('USD/CHF', 'LONG', 9287, 9240, "2013-08-02T19:39:25"),
 # ----------------------------------------------------
 # ----------------------------------------------------
 # TRADE ALERT
 # DOW
 # I have just shorted Dow @15,520 with protective stop @ 15,590 for a 70
-OpenTrade('DOW', 'SHORT', 15520, 15590),
+OpenTrade('DOW', 'SHORT', 15520, 15590, "2013-08-02T19:39:25"),
 # pip risk.
-# John 
+# John
 # ----------------------------------------------------
 # ----------------------------------------------------
 # TRADE ALERTS
 # GBP/USD
 # I have just shorted GBP/USD @ 1.5520 with protective stop @ 1.5570 for
-OpenTrade('GBP/USD', 'SHORT', 15520, 15570),
+OpenTrade('GBP/USD', 'SHORT', 15520, 15570, "2013-08-06T19:54:17"),
 # a 50 pip risk
 # DOW
 # I have just shorted Dow @ 15,400 with protective stop @ 15,500 for a
-OpenTrade('DOW', 'SHORT', 15400, 15500),
+OpenTrade('DOW', 'SHORT', 15400, 15500, "2013-08-06T19:54:17"),
 # 100 pip risk
 # John
 # ----------------------------------------------------
@@ -1276,10 +1276,10 @@ OpenTrade('DOW', 'SHORT', 15400, 15500),
 # DAX  30 (GERMAN STOCK INDEX)
 # I have just shorted DAX @ 8,258 with protective stop @ 8330 for 72 pip
 # risk
-OpenTrade('DAX', 'SHORT', 8258, 8330),
+OpenTrade('DAX', 'SHORT', 8258, 8330, "2013-08-09T17:18:58"),
 # NASDAQ
 # I have just shorted Nasdaq @ 3,100 with protective stop @ 3,130 for
-OpenTrade('NASDAQ', 'SHORT', 3100, 3130),
+OpenTrade('NASDAQ', 'SHORT', 3100, 3130, "2013-08-09T17:18:58"),
 # 130 pip risk
 # The odds are very high we are in large third waves down in all
 # indexes.  That is why gold has jumped overnight.  The downside
@@ -1291,7 +1291,7 @@ OpenTrade('NASDAQ', 'SHORT', 3100, 3130),
 # TRADE ALERT
 # ALCOA
 # I have just gone long Alcoa @ 8.20 with protective stop @ 7.90.
-OpenTrade('ALCOA', 'LONG', 820, 790),
+OpenTrade('ALCOA', 'LONG', 820, 790, "2013-08-12T11:40:52"),
 # I have some excellent tramlines working and am returning to this
 # market after a break where it has been forming a bottom, I believe.
 # John
@@ -1302,7 +1302,7 @@ OpenTrade('ALCOA', 'LONG', 820, 790),
 # I have just shorted Gold @ 1,336 with protective stop @ 1,346 for a
 # 100 pip risk
 # John
-OpenTrade('GOLD', 'SHORT', 13360, 13460),
+OpenTrade('GOLD', 'SHORT', 13360, 13460, "2013-08-13T11:29:02"),
 # ----------------------------------------------------
 # ----------------------------------------------------
 # TRADE ALERT
@@ -1310,14 +1310,14 @@ OpenTrade('GOLD', 'SHORT', 13360, 13460),
 # SEPT T-BONDS
 # I have just gone long Sept T-Bonds @ 132.60 with protective stop @
 # 131.60 for 100 pip risk
-OpenTrade('SEPT T-BONDS', 'LONG', 13260, 13160),
+OpenTrade('SEPT T-BONDS', 'LONG', 13260, 13160, "2013-08-13T11:29:02"),
 # John
 # ----------------------------------------------------
 # ----------------------------------------------------
 # TRADE ALERT
 # USD/CAD
 # I have just shorted USD/CAD @ 1.0340 with protective stop @ 1.0390 for
-OpenTrade('USD/CAD', 'SHORT', 10340, 10390),
+OpenTrade('USD/CAD', 'SHORT', 10340, 10390, "2013-08-13T17:48:05"),
 # 50 pip risk.
 # I am looking for break of 1.02.
 # John
@@ -1326,7 +1326,7 @@ OpenTrade('USD/CAD', 'SHORT', 10340, 10390),
 # TRADE ALERT
 # DOW
 # I have exited for A ACCOUNT short Dow @ 14,855 on the first trade
-CloseTrade('DOW', 14855, ['A']),
+CloseTrade('DOW', 14855, ['A'], "2013-08-14T13:30:04"),
 # @15,520 on 6 Aug.
 # Profit of 665 pips in three weeks.
 # John
@@ -1335,7 +1335,7 @@ CloseTrade('DOW', 14855, ['A']),
 # TRADE ALERT
 # GBP/USD
 # I have just shorted GBP/USD @ 1.5580 with protective stop @ 1.5630 for
-OpenTrade('GBP/USD', 'SHORT', 15580, 15630),
+OpenTrade('GBP/USD', 'SHORT', 15580, 15630, "2013-08-22T08:56:49"),
 # 50 pip risk
 # Have a Fib 50% retrace of last wave down and on C wave of an A-B-C up.
 # John
@@ -1345,7 +1345,7 @@ OpenTrade('GBP/USD', 'SHORT', 15580, 15630),
 # DAX
 # I have just shorted DAX (German stock index) @ 8245 with protective
 # stop @ 8290 for 45 pip risk.
-OpenTrade('DAX', 'SHORT', 8245, 8290),
+OpenTrade('DAX', 'SHORT', 8245, 8290, "2013-09-02T15:51:13"),
 # It has made a 50% Fib retrace of the decline off the 8430 high and
 # into severe resistance.
 # John
@@ -1354,7 +1354,7 @@ OpenTrade('DAX', 'SHORT', 8245, 8290),
 # TRADE ALERT
 # USD/JY
 # I have shorted USD/JY @ 99.45 with protective stop @ 99.90 for 45 pip
-OpenTrade('USD/JY', 'SHORT', 9945, 9990),
+OpenTrade('USD/JY', 'SHORT', 9945, 9990, "2013-09-03T09:34:18"),
 # risk
 # I have been out of the office this afternoon and could have got a
 # better entry!
@@ -1364,14 +1364,14 @@ OpenTrade('USD/JY', 'SHORT', 9945, 9990),
 # TRADE ALERT
 # DEC T-BONDS 30-YR
 # I have just shorted Dec T-Bonds @ 130.16 with protective stop @ 130.60
-OpenTrade('DEC T-BONDS', 'SHORT', 13016, 13060),
+OpenTrade('DEC T-BONDS', 'SHORT', 13016, 13060, "2013-09-03T19:06:46"),
 # for 34 pip risk
 # ______________________________
 # I have moved my protective stops to break-even on:
 # Short DAX (8245)
-MoveStop('DAX', 8245),
+MoveStop('DAX', 8245, "2013-09-03T19:06:46"),
 # Short EUR/USD (1.3340)
-MoveStop('EUR/USD', 13340),
+MoveStop('EUR/USD', 13340, "2013-09-03T19:06:46"),
 # John
 # ----------------------------------------------------
 # ----------------------------------------------------
@@ -1386,14 +1386,14 @@ MoveStop('EUR/USD', 13340),
 # broken.
 # TRADE  I have just shorted TESLA Motors @ 165.90 with protective stop
 # @ 170.00
-OpenTrade('TESLA', 'SHORT', 1659, 1700),
+OpenTrade('TESLA', 'SHORT', 1659, 1700, "2013-09-04T16:26:49"),
 # John
 # ----------------------------------------------------
 # ----------------------------------------------------
 # TRADE ALERT
 # GBP/USD
 # I have just shorted GBP/USD @ 1.5640 with protective stop @ 1.5690 for
-OpenTrade('USD/JY', 'SHORT', 9970, 10030),
+OpenTrade('USD/JY', 'SHORT', 9970, 10030, "2013-09-04T17:06:33"),
 # 50 pip risk.
 # John
 # ----------------------------------------------------
@@ -1411,14 +1411,14 @@ OpenTrade('USD/JY', 'SHORT', 9970, 10030),
 # I apologise for any inconvenience and once again, please treat this
 # with urgency.  Thank you.
 # Also, the new website is almost done and I will make announcement on
-# this shortly.  
+# this shortly.
 # Kind Regards,
 # JohnTRAMLINE TRADERS
 # ----------------------------------------------------
 # ----------------------------------------------------
 # Dear FMT Member,
 # We are having problems with our new paypal account and you will not be
-# able to renew just yet.  We hope to have it fixed very soon. 
+# able to renew just yet.  We hope to have it fixed very soon.
 # Still go ahead and cancel your existing subscription, as I asked in my
 # earlier email.
 # Meanwhile, be assured you will still receive my Trade Alerts
@@ -1430,7 +1430,7 @@ OpenTrade('USD/JY', 'SHORT', 9970, 10030),
 # TRADE ALERT
 # USD/JY
 # I have just shorted USD/JY @ 99.70 with protective stop @ 100.30 for a
-OpenTrade('USD/JY', 'SHORT', 9970, 10030),
+OpenTrade('USD/JY', 'SHORT', 9970, 10030, "2013-09-05T20:49:00"),
 # 60 pip risk.
 # John
 # ----------------------------------------------------
@@ -1439,7 +1439,7 @@ OpenTrade('USD/JY', 'SHORT', 9970, 10030),
 
 # DEC T-BONDS
 # I have just taken profit on short Dec T-Bonds for A Account @ 128.70.
-CloseTrade('DEC T-BONDS', 12870, ['A']),
+CloseTrade('DEC T-BONDS', 12870, ['A'], "2013-09-06T09:06:01"),
 #  B and C Account trades are still open.
 # The US Unemployment Rate data is out later today and we should see a
 # volatile market, especially because the market is heavily short
@@ -1462,14 +1462,14 @@ CloseTrade('DEC T-BONDS', 12870, ['A']),
 # OCT CRUDE OIL US
 # I have just shorted Oct US Crude @ 109.05 with protective stop @
 # 109.50 for 45 pip risk.
-OpenTrade('OCT US CRUDE', 'SHORT', 10905, 10950),
+OpenTrade('OCT US CRUDE', 'SHORT', 10905, 10950, "2013-09-06T13:41:42"),
 # John
 # ----------------------------------------------------
 # ----------------------------------------------------
 # TRADE ALERT
 # DEC T-BONDS
 # I have just taken profit for B Account on short Dec T-Bonds @ 129.40.
-CloseTrade('DEC T-BONDS', 12940, ['B']),
+CloseTrade('DEC T-BONDS', 12940, ['B'], "2013-09-06T14:23:02"),
 #  C Account trade still open.
 # John
 # ----------------------------------------------------
@@ -1478,7 +1478,7 @@ CloseTrade('DEC T-BONDS', 12940, ['B']),
 # DAX
 # I have just shorted DAX @ 8282 with protective stop @ 8325 for a 43
 # pip risk.
-OpenTrade('DAX', 'SHORT', 8282, 8325),
+OpenTrade('DAX', 'SHORT', 8282, 8325, "2013-09-06T15:24:04"),
 # Have hit a meeting of  62% Fib retrace, an upper tramline and wave C
 # = wave A here.  This should be solid resistance.
 # John
@@ -1488,14 +1488,14 @@ OpenTrade('DAX', 'SHORT', 8282, 8325),
 # DEC T-BONDS
 # I have just exited my short Dec T-Bonds for C Account @ 128.70.
 # John
-CloseTrade('DEC T-BONDS', 12880, ['C']),
+CloseTrade('DEC T-BONDS', 12880, ['C'], "2013-09-10T14:54:23"),
 # ----------------------------------------------------
 # ----------------------------------------------------
 # TRADE ALERT
 # DEC T-BONDS 30-YR
 # I have just gone long Dec T-Bonds @ 128.80 with protective stop @
 # 128.40 for 40 pip risk.
-OpenTrade('DEC T-BONDS', 'LONG', 12880, 12840),
+OpenTrade('DEC T-BONDS', 'LONG', 12880, 12840, "2013-09-10T14:54:23"),
 # See today's MC.  Market has dropped to Fib 87% of rally off 6 Sep low
 # into support.  I am looking for at least 200-300 pips.  I took
 # profit on short trade for C Account earlier.
@@ -1506,7 +1506,7 @@ OpenTrade('DEC T-BONDS', 'LONG', 12880, 12840),
 # TESLA MOTORS (US SHARE)
 # I have just shorted Tesla @ 165.10 with protective stop @ 169.
 # John
-OpenTrade('TESLA', 'SHORT', 1651, 1690),
+OpenTrade('TESLA', 'SHORT', 1651, 1690, "2013-09-10T20:32:18"),
 # ----------------------------------------------------
 # ----------------------------------------------------
 # TRADE ALERT
@@ -1517,7 +1517,7 @@ OpenTrade('TESLA', 'SHORT', 1651, 1690),
 # up well as it is already on the floor and is totally unloved and short
 # interest must be small or even non-existent (I must check).
 # I HAVE JUST GONE LONG ALCOA @ 8.10 WITH STOP @ 7.70 FOR A SWING TRADE.
-OpenTrade('ALCOA', 'LONG', 810, 770),
+OpenTrade('ALCOA', 'LONG', 810, 770, "2013-09-10T20:32:18"),
 # I have also been accumulating the shares as an investment (long term).
 # See previous posts for rationale and charts.
 
@@ -1525,7 +1525,7 @@ OpenTrade('ALCOA', 'LONG', 810, 770),
 #  Remember, I have been commenting for months that after a decline,
 # the retrace is usually very deep - at the 78% level or even above.
 #  This is wave 2 and such a deep retrace is entirely in chacter.
-# John 
+# John
 # ----------------------------------------------------
 # ----------------------------------------------------
 # TRADE ALERT
@@ -1533,15 +1533,15 @@ OpenTrade('ALCOA', 'LONG', 810, 770),
 # Has hit my target at 1.5800 (slight overshoot of Fib 62% retrace and
 # chart resistance from November).  Severe neg mom div on daily.
 # I have just shorted GBP/USD @ 1.5802 with protective stop @ 1.5860
-OpenTrade('GBP/USD', 'SHORT', 15802, 15860),
+OpenTrade('GBP/USD', 'SHORT', 15802, 15860, "2013-09-11T17:47:17"),
 # EUR/USD
 # And euro has hit target (62% Fib) and a neg mom div on hourly.
 # I have just shorted EUR/USD @ 1.3298 with protective stop @ 1.3330.
-OpenTrade('EUR/USD', 'SHORT', 13298, 13330),
+OpenTrade('EUR/USD', 'SHORT', 13298, 13330, "2013-09-11T17:47:17"),
 # USD/JY
 # Has done an A-B-C dip today and is looking bullish
 # I have just bought USD/JY @ 100.05 with protective stop @ 99.60.
-OpenTrade('USD/JY', 'LONG', 10005, 9960),
+OpenTrade('USD/JY', 'LONG', 10005, 9960, "2013-09-11T17:47:17"),
 # DOW
 # By one measure, the Dow @ 15,270 has reached a major target, but lies
 # between two Fibs.  It may have done enough to complete the rally.  I
@@ -1553,9 +1553,9 @@ OpenTrade('USD/JY', 'LONG', 10005, 9960),
 # TRADE ALERTS
 # USD/JY
 # I was stopped out of long USD/JY trade, but
-CloseTrade('USD/JY', 'STOP', 'ALL'),
+CloseTrade('USD/JY', 'STOP', 'ALL', "2013-09-11T18:17:20"),
 # I have just gone long USD/JY @ 99.40 with protective stop @ 98.90 for
-OpenTrade('USD/JY', 'LONG', 9940, 9890),
+OpenTrade('USD/JY', 'LONG', 9940, 9890, "2013-09-11T18:17:20"),
 # 50 pip risk.
 # Have a Fib 62% retrace and rests on support.
 # John
@@ -1567,7 +1567,7 @@ OpenTrade('USD/JY', 'LONG', 9940, 9890),
 # I have just gone long Gold @ 1316 with protective stop @ 1296 for 200
 # pip risk
 # John
-OpenTrade('GOLD', 'LONG', 13160, 12960),
+OpenTrade('GOLD', 'LONG', 13160, 12960, "2013-09-13T14:16:18"),
 # ----------------------------------------------------
 # ----------------------------------------------------
 # TRADE ALERT
@@ -1578,13 +1578,13 @@ OpenTrade('GOLD', 'LONG', 13160, 12960),
 # I have just shorted Dow @ 15,360 with protective stop @ 15,400 for 40
 # pip risk.
 # John
-OpenTrade('DOW', 'SHORT', 15360, 15400),
+OpenTrade('DOW', 'SHORT', 15360, 15400, "2013-09-13T16:07:20"),
 # ----------------------------------------------------
 # ----------------------------------------------------
 # TRADE ALERT
 # DEC T-BONDS
 # I have just taken profits for A Account on long Dec T-Bonds @ 131.24,
-CloseTrade('DEC T-BONDS', 13124, ['A']),
+CloseTrade('DEC T-BONDS', 13124, ['A'], "2013-09-13T16:07:20"),
 # leaving B and C trades open.
 # John
 # ----------------------------------------------------
@@ -1628,14 +1628,14 @@ CloseTrade('DEC T-BONDS', 13124, ['A']),
 # I have just taken profit on long Gold for A Account @ 1.363.  My B
 # and C trades still open and have moved stop on them from $1286 to
 # $1330.
-CloseTrade('GOLD', 13630, ['A']),
-MoveStop('GOLD', 13300),
+CloseTrade('GOLD', 13630, ['A'], "2013-09-18T20:47:59"),
+MoveStop('GOLD', 13300, "2013-09-18T20:47:59"),
 # It has hit Fib 50% retrace and meeting of two tramlines (charts later
 # today in MC post)
 
 # GBP/USD
 # I have just shorted GBP/USD @ 1.6125 with protective stop @ 1.6175.
-OpenTrade('GBP/USD', 'SHORT', 16125, 16175),
+OpenTrade('GBP/USD', 'SHORT', 16125, 16175, "2013-09-18T20:47:59"),
 # It has made an overshoot of upper tramline and hit targets set
 # yesterday in my MW Trader email.
 
@@ -1645,7 +1645,7 @@ OpenTrade('GBP/USD', 'SHORT', 16125, 16175),
 # TRADE ALERT
 # GOLD
 # I have just exited for B account my long Gold trade @ $1362.
-CloseTrade('GOLD', 13620, ['B']),
+CloseTrade('GOLD', 13620, ['B'], "2013-09-19T08:19:43"),
 # The Dow and Nasdaq seem to be backing off their upper tramlines and I
 # may have a trade soon.
 
@@ -1665,7 +1665,7 @@ CloseTrade('GOLD', 13620, ['B']),
 # value this is as I am confident  you have picked up some great
 # trading ideas already.  And there are lots more to come!.
 # I WILL ASK YOU TO CANCEL YOUR EXISTING SUBSCRIPTION AND RE-SUBSCRIBE
-# IN THE NEW FORMAT (FROM SATURDAY SHOULD BE FINE).  
+# IN THE NEW FORMAT (FROM SATURDAY SHOULD BE FINE).
 # After that, if you believe you have paid for a significant unused
 # portion of the existing period and would like a refund, then get back
 # to me giving your bank details and I will arrange a refund of that
@@ -1682,7 +1682,7 @@ CloseTrade('GOLD', 13620, ['B']),
 # See this morning's MC.  A budding upside breakout which could reach
 # over 100
 # I have just gone long USD/JY @ 99.45 with protective stop @ 99.20 for
-OpenTrade('USD/JY', 'LONG', 9945, 9920),
+OpenTrade('USD/JY', 'LONG', 9945, 9920, "2013-09-20T09:48:59"),
 # a 25 pip risk
 # John
 # ----------------------------------------------------
@@ -1690,7 +1690,7 @@ OpenTrade('USD/JY', 'LONG', 9945, 9920),
 # TRADE ALERT
 # GBP/USD
 # I have just taken profit for A Account on short GBP/USD @ 1.600.
-CloseTrade('GBP/USD', 16000, ['A']),
+CloseTrade('GBP/USD', 16000, ['A'], "2013-09-20T14:04:40"),
 # It has hit a lower tramline support.  Will keep B and C trades open
 # with stops at break even.
 
@@ -1705,7 +1705,7 @@ CloseTrade('GBP/USD', 16000, ['A']),
 # I have just gone long gold @ 1335 with protective stop @ 1325 for 100
 # pip risk.
 # John
-OpenTrade('GOLD', 'LONG', 13350, 13250),
+OpenTrade('GOLD', 'LONG', 13350, 13250, "2013-09-20T17:19:38"),
 # ----------------------------------------------------
 # ----------------------------------------------------
 # RE: TRAMLINE TRADERS WEBSITE
@@ -1726,7 +1726,7 @@ OpenTrade('GOLD', 'LONG', 13350, 13250),
 # TRADE ALERT
 # NASDAQ 100
 # I have just shorted Nasdaq @ 3218 with protective stop @ 3225 for 70
-OpenTrade('NASDAQ', 'SHORT', 3218, 3225),
+OpenTrade('NASDAQ', 'SHORT', 3218, 3225, "2013-09-23T18:27:32"),
 # pip risk
 # Big move down from Friday and have a Fib 38% retrace into resistance
 # overhead.
@@ -1740,7 +1740,7 @@ OpenTrade('NASDAQ', 'SHORT', 3218, 3225),
 # I have just gone long Dow @ 15,400 with protective stop @ 15,370 for
 # 30 pip risk.
 # John
-OpenTrade('DOW', 'LONG', 15400, 15370),
+OpenTrade('DOW', 'LONG', 15400, 15370, "2013-09-24T15:02:43"),
 # ----------------------------------------------------
 # ----------------------------------------------------
 # TRADE ALERT
@@ -1748,7 +1748,7 @@ OpenTrade('DOW', 'LONG', 15400, 15370),
 # Have just hit my main target at 133.
 # TRADE  I have just taken profit for B Account on long Dec T-Bond from
 # 128.80 @ 132.92.
-CloseTrade('DEC T-BONDS', 13292, ['B']),
+CloseTrade('DEC T-BONDS', 13292, ['B'], "2013-09-24T15:02:43"),
 # My C Account trade is still open.
 # John
 # ----------------------------------------------------
@@ -1772,7 +1772,7 @@ CloseTrade('DEC T-BONDS', 13292, ['B']),
 # USD/JY
 # I have just gone long USD/JY @ 98.60 with protective stop @ 98.30 for
 # a 30 pip risk.
-OpenTrade('USD/JY', 'LONG', 9860, 9830),
+OpenTrade('USD/JY', 'LONG', 9860, 9830, "2013-09-25T10:22:43"),
 # I have been waiting for a low-risk entry and market has fallen ot the
 # Fib 62% retrace.  First target is 99.20.
 # John
@@ -1783,7 +1783,7 @@ OpenTrade('USD/JY', 'LONG', 9860, 9830),
 # With five down and a pos mom div - and the big gap now closed, stocks
 # are due a good rebound in an A-B-C of over 100 pips.
 # I have just gone long Dow @ 15,360 with protective stop @ 15,315 for a
-OpenTrade('DOW', 'LONG', 15360, 15315),
+OpenTrade('DOW', 'LONG', 15360, 15315, "2013-09-25T14:48:37"),
 # 45 pip risk.
 # John
 # ----------------------------------------------------
@@ -1792,7 +1792,7 @@ OpenTrade('DOW', 'LONG', 15360, 15315),
 # DEC T-BONDS
 
 # I have just taken profit for C Account on long Dec T-Bonds @ 132.00.
-CloseTrade('DEC T-BONDS', 13200, ['C']),
+CloseTrade('DEC T-BONDS', 13200, ['C'], "2013-09-25T17:31:56"),
 # I am now flat the bonds.
 # John
 # ----------------------------------------------------
@@ -1800,7 +1800,7 @@ CloseTrade('DEC T-BONDS', 13200, ['C']),
 # TRADE ALERT
 # EUR/USD
 # I have just shorted EUR/USD @ 1.3490 with protective stop @ 1.3540 for
-OpenTrade('EUR/USD', 'SHORT', 13490, 13540)
+OpenTrade('EUR/USD', 'SHORT', 13490, 13540, "2013-09-26T14:51:15")
 # 50 pip risk.
 # John
 # ----------------------------------------------------
