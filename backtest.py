@@ -6,5 +6,7 @@ def run_backtest(trade_alerts):
 	for alert in trade_alerts:
 		alert.apply(trades)
 
+	print('================================================================================\n')
+
 if __name__ == '__main__':
 	run_backtest(alerts.trade_alerts)

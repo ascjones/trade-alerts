@@ -1748,7 +1748,7 @@ OpenTrade('DOW', 'LONG', 15400, 15370),
 # Have just hit my main target at 133.
 # TRADE  I have just taken profit for B Account on long Dec T-Bond from
 # 128.80 @ 132.92.
-CloseTrade('DEC T-BOND', 13292, ['B']),
+CloseTrade('DEC T-BONDS', 13292, ['B']),
 # My C Account trade is still open.
 # John
 # ----------------------------------------------------

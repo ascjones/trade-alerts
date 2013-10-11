@@ -24,8 +24,8 @@ class CloseTrade:
 		if trade:
 			trade.close(self.price, self.accounts, self.kwargs)
 		else:
-			print('Failed to close trade for {0} at {1} for accounts {2}: No previous trade found'.format(
-				self.instrument, self.price, self.accounts))
+			print(Fore.RED + 'Failed to close trade for {0} at {1} for accounts {2}: No previous trade found'.format(
+				self.instrument, self.price, self.accounts) + Fore.RESET)
 
 class MoveStop:
 	def __init__(self, instrument, stop):
@@ -37,8 +37,8 @@ class MoveStop:
 		if trade:
 			trade.move_stop(self.stop)
 		else:
-			print('Failed to move stop for {0} to {1}: No previous trade found'.format(
-				self.instrument, self.stop))
+			print(Fore.RED + 'Failed to move stop for {0} to {1}: No previous trade found'.format(
+				self.instrument, self.stop) + Fore.RESET)
 
 class Trade:
 	def __init__(self, instrument, direction, opening, stop):
@@ -52,7 +52,8 @@ class Trade:
 			self.risk = opening - stop if self.direction == 'LONG' else stop - opening
 		else:
 			self.risk = 'MAX'
-		print(Fore.CYAN + 'Trade Opened:' + Fore.RESET + ' {0} {1} @ {2}, Stop {3} for {4} pip risk'.format(self.instrument, self.direction, self.opening, self.stop, self.risk))
+		print('{:<13} {:<13} {:<6} @ {:<6} Stop: {:<6} Risk: {:<4}'.format(
+			'Trade Opened:', self.instrument, self.direction, self.opening, self.stop, self.risk))
 
 	def close(self, price, accounts, kwargs):
 		if price == 'STOP':
@@ -68,14 +69,19 @@ class Trade:
 			raise Exception('Unsupported closing price {0}'.format(price))
 
 		self.closing = price
-		print(Fore.YELLOW + 'Trade Closed:' + Fore.RESET + ' {0} {1} @ {2} for accounts {3}. P/L {4}'.format(self.instrument, self.direction, self.closing, accounts, self.pl()))
+		pl = self.pl()
+		pl_color = Fore.GREEN if pl > 0 else Fore.RED
+
+		print('{}{:<13} {:<13} {:<6} @ {:<6} for accounts {:<6}{}P/L: {}{}'.format(
+			Fore.YELLOW, 'Trade Closed:', self.instrument, self.direction, self.closing, accounts, pl_color, pl, Fore.RESET))
 
 	def move_stop(self, stop):
 		prev_stop = self.stop
 		if stop == 'BREAK EVEN':
 			stop = self.opening
 		self.stop = stop
-		print('Stop Moved: {0} {1} from {2} to {3}'.format(self.instrument, self.direction, prev_stop, self.stop))
+		print('{}{:<13} {:<13} {:<6} from {} to {}{}'.format(
+			Fore.MAGENTA, 'Stop Moved:', self.instrument, self.direction, prev_stop, self.stop, Fore.RESET))
 
 	def isopen(self):
 		return self.closing == None
