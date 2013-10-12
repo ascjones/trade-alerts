@@ -1,52 +1,61 @@
 import pdb
+import datetime
 from colorama import init, Fore
 
 class OpenTrade:
-	def __init__(self, instrument, direction, price, stop):
+	def __init__(self, instrument, direction, price, stop, date):
 		self.instrument = instrument
 		self.direction = direction
 		self.price = price
 		self.stop = stop
+		self.date = date
 
 	def apply(self, trades):
-		trades.append(Trade(self.instrument, self.direction, self.price, self.stop))
+		trades.append(Trade(self.instrument, self.direction, self.price, self.stop, self.date))
 
 
 class CloseTrade:
-	def __init__(self, instrument, price, accounts, **kwargs):
+	def __init__(self, instrument, price, accounts, date, **kwargs):
 		self.instrument = instrument
 		self.price = price
 		self.accounts = accounts
+		self.date = date
 		self.kwargs = kwargs
 
 	def apply(self, trades):
 		trade = next((t for t in trades[::-1] if t.instrument == self.instrument), None)
 		if trade:
-			trade.close(self.price, self.accounts, self.kwargs)
+			trade.close(self.price, self.accounts, self.date, self.kwargs)
 		else:
 			print(Fore.RED + 'Failed to close trade for {0} at {1} for accounts {2}: No previous trade found'.format(
 				self.instrument, self.price, self.accounts) + Fore.RESET)
 
 class MoveStop:
-	def __init__(self, instrument, stop):
+	def __init__(self, instrument, stop, date):
 		self.instrument = instrument
 		self.stop = stop
+		self.date = date
 
 	def apply(self, trades):
 		trade = next((t for t in trades[::-1] if t.instrument == self.instrument), None)
 		if trade:
-			trade.move_stop(self.stop)
+			trade.move_stop(self.stop, self.date)
 		else:
 			print(Fore.RED + 'Failed to move stop for {0} to {1}: No previous trade found'.format(
 				self.instrument, self.stop) + Fore.RESET)
 
+def date_from_str(date_str):
+		datetime.datetime.strptime(date_str, '%Y-%m-%dT%H:%M:%S')
+
 class Trade:
-	def __init__(self, instrument, direction, opening, stop):
+
+	def __init__(self, instrument, direction, opening, stop, date):
 		self.instrument = instrument
 		self.direction = direction
 		self.opening = opening
 		self.stop = stop
 		self.closing_prices = {}
+		self.date = date_from_str(date)
 
 		if stop:
 			if direction == 'LONG':
@@ -65,7 +74,7 @@ class Trade:
 
 	account_ids = ['A','B','C']
 
-	def close(self, price, accounts, kwargs):
+	def close(self, price, accounts, date, kwargs):
 		if price == 'STOP':
 			price = self.stop
 		elif price == 'BREAK EVEN':
@@ -92,7 +101,7 @@ class Trade:
 		print('{}{:<13} {:<13} {:<6} @ {:<6} for accounts {:<16}{}P/L: {}{}'.format(
 			Fore.YELLOW, 'Trade Closed:', self.instrument, self.direction, price, accounts, pl_color, accounts_pl, Fore.RESET))
 
-	def move_stop(self, stop):
+	def move_stop(self, stop, date):
 		prev_stop = self.stop
 		if stop == 'BREAK EVEN':
 			stop = self.opening

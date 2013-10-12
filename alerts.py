@@ -266,7 +266,7 @@ MoveStop('AUS/USD', 'BREAK EVEN', "2013-05-14T09:41:29"),
 # TRADE ALERT
 # USD.JY
 # I have exited for B Account for 300 pip gain.
-CloseTrade('USD/JY', None, ['B'], pl=300, "2013-05-14T17:14:26"),
+CloseTrade('USD/JY', None, ['B'], "2013-05-14T17:14:26", pl=300),
 # John
 # ----------------------------------------------------
 # ----------------------------------------------------
