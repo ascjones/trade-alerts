@@ -2,6 +2,9 @@ import pdb
 import datetime
 from colorama import init, Fore
 
+def get_last_trade(trades, instrument):
+	return next((t for t in trades[::-1] if t.instrument == instrument), None)
+
 class OpenTrade:
 	def __init__(self, instrument, direction, price, stop, date):
 		self.instrument = instrument
@@ -11,6 +14,11 @@ class OpenTrade:
 		self.date = date
 
 	def apply(self, trades):
+		existing_trade = get_last_trade(trades, self.instrument)
+		if existing_trade:
+			print(Fore.MAGENTA + 'Closing existing {} {} trade, assuming we have been stopped out'
+				.format(existing_trade.direction, existing_trade.instrument) + Fore.RESET)
+			existing_trade.close('STOP', 'ALL', self.date)
 		trades.append(Trade(self.instrument, self.direction, self.price, self.stop, self.date))
 
 
@@ -23,7 +31,7 @@ class CloseTrade:
 		self.kwargs = kwargs
 
 	def apply(self, trades):
-		trade = next((t for t in trades[::-1] if t.instrument == self.instrument), None)
+		trade = get_last_trade(trades, self.instrument)
 		if trade:
 			trade.close(self.price, self.accounts, self.date, self.kwargs)
 		else:
@@ -37,7 +45,7 @@ class MoveStop:
 		self.date = date
 
 	def apply(self, trades):
-		trade = next((t for t in trades[::-1] if t.instrument == self.instrument), None)
+		trade = get_last_trade(trades, self.instrument)
 		if trade:
 			trade.move_stop(self.stop, self.date)
 		else:
@@ -74,7 +82,7 @@ class Trade:
 
 	account_ids = ['A','B','C']
 
-	def close(self, price, accounts, date, kwargs):
+	def close(self, price, accounts, date, kwargs=None):
 		if price == 'STOP':
 			price = self.stop
 		elif price == 'BREAK EVEN':

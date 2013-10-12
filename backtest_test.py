@@ -53,3 +53,13 @@ def test_close_separate_accounts():
 	assert len(trades) == 1
 	assert trades[0].pl()['A'] == 100
 	assert trades[0].pl()['B'] == 200
+
+def test_close_existing_trade_when_new_trade_for_same_instrument():
+	alerts = [
+		OpenTrade('DOW', 'SHORT', 15000, 15100, default_date),
+		OpenTrade('DOW', 'SHORT', 15100, 15200, default_date),
+	]
+	trades = backtest.run_backtest(alerts).trades
+	assert len(trades) == 2
+	assert_trade(trades[0], closing_prices=all_accounts_pl(15100))
+	assert_trade(trades[1], opening=15100, stop=15200)
