@@ -108,16 +108,3 @@ if __name__ == "__main__":
 					if isinstance(c, OpenTrade):
 						f.write("OpenTrade('{0}', '{1}', {2}, {3})\n".format(c.instrument, c.direction, c.price, c.stop))
 			f.write('----------------------------------------------------\n')
-
-	# for ta in trade_alerts:		
-	# 	commands = ta.get_commands()
-	# 	# pdb.set_trace()
-	# 	print(ta.msg)
-	# 	print('----------------------------------------------------------')
-	# 	if len(commands) == 0:
-	# 		print('NO COMMANDS\n')
-	# 	else:
-	# 		for c in commands:
-	# 			print('{0}: {1}\n'.format(c.__class__.__name__, vars(c)))
-	# 	print('----------------------------------------------------------')
-	# 	print('\n')	
