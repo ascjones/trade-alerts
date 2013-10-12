@@ -1,5 +1,8 @@
 from model import *
 import backtest
+import datetime
+
+default_date = datetime.datetime.now()
 
 def assert_trade(trade, **kwargs):
 	trade_vars = vars(trade)
@@ -11,8 +14,8 @@ def all_accounts_pl(pl):
 
 def test_relative_pl():
 	alerts = [
-		OpenTrade('USD/JY', 'LONG', 9900, 9880),
-		CloseTrade('USD/JY', None, ['B'], pl=300)
+		OpenTrade('USD/JY', 'LONG', 9900, 9880, default_date),
+		CloseTrade('USD/JY', None, ['B'], default_date, pl=300)
 	]
 	trades = backtest.run_backtest(alerts).trades
 	assert len(trades) == 1
@@ -21,10 +24,10 @@ def test_relative_pl():
 
 def test_pl_multiple_trades():
 	alerts = [
-		OpenTrade('USD/JY', 'LONG', 9900, 9880),
-		CloseTrade('USD/JY', 10000, 'ALL'),
-		OpenTrade('USD/JY', 'LONG', 10000, 9900),
-		CloseTrade('USD/JY', 9900, 'ALL')
+		OpenTrade('USD/JY', 'LONG', 9900, 9880, default_date),
+		CloseTrade('USD/JY', 10000, 'ALL', default_date),
+		OpenTrade('USD/JY', 'LONG', 10000, 9900, default_date),
+		CloseTrade('USD/JY', 9900, 'ALL', default_date)
 	]
 	trades = backtest.run_backtest(alerts).trades
 	assert len(trades) == 2
@@ -33,8 +36,8 @@ def test_pl_multiple_trades():
 
 def test_short_trade_pl():
 	alerts = [
-		OpenTrade('DOW', 'SHORT', 15000, 15100),
-		CloseTrade('DOW', 14900, 'ALL')
+		OpenTrade('DOW', 'SHORT', 15000, 15100, default_date),
+		CloseTrade('DOW', 14900, 'ALL', default_date)
 	]
 	trades = backtest.run_backtest(alerts).trades
 	assert len(trades) == 1
@@ -42,9 +45,9 @@ def test_short_trade_pl():
 
 def test_close_separate_accounts():
 	alerts = [
-		OpenTrade('DOW', 'SHORT', 15000, 15100),
-		CloseTrade('DOW', 14900, ['A']),
-		CloseTrade('DOW', 14800, ['B']),
+		OpenTrade('DOW', 'SHORT', 15000, 15100, default_date),
+		CloseTrade('DOW', 14900, ['A'], default_date),
+		CloseTrade('DOW', 14800, ['B'], default_date),
 	]
 	trades = backtest.run_backtest(alerts).trades
 	assert len(trades) == 1

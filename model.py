@@ -55,7 +55,7 @@ class Trade:
 		self.opening = opening
 		self.stop = stop
 		self.closing_prices = {}
-		self.date = date_from_str(date)
+		self.date = date if isinstance(date, datetime.datetime) else date_from_str(date)
 
 		if stop:
 			if direction == 'LONG':
