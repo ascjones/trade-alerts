@@ -13,13 +13,13 @@ class OpenTrade:
 		self.stop = stop
 		self.date = date
 
-	def apply(self, trades):
+	def apply(self, trades, all_accounts):
 		existing_trade = get_last_trade(trades, self.instrument)
 		if existing_trade:
 			print(Fore.MAGENTA + 'Closing existing {} {} trade, assuming we have been stopped out'
 				.format(existing_trade.direction, existing_trade.instrument) + Fore.RESET)
-			existing_trade.close('STOP', 'ALL', self.date)
-		trades.append(Trade(self.instrument, self.direction, self.price, self.stop, self.date))
+			existing_trade.close('STOP', all_accounts, self.date)
+		trades.append(Trade(self.instrument, self.direction, self.price, self.stop, self.date, all_accounts))
 
 
 class CloseTrade:
@@ -30,10 +30,11 @@ class CloseTrade:
 		self.date = date
 		self.kwargs = kwargs
 
-	def apply(self, trades):
+	def apply(self, trades, all_accounts):
 		trade = get_last_trade(trades, self.instrument)
 		if trade:
-			trade.close(self.price, self.accounts, self.date, self.kwargs)
+			accounts_to_close = all_accounts if self.accounts == 'ALL' else [acc for acc in all_accounts if acc.name in self.accounts]
+			trade.close(self.price, accounts_to_close, self.date, self.kwargs)
 		else:
 			print(Fore.RED + 'Failed to close trade for {0} at {1} for accounts {2}: No previous trade found'.format(
 				self.instrument, self.price, self.accounts) + Fore.RESET)
@@ -44,7 +45,7 @@ class MoveStop:
 		self.stop = stop
 		self.date = date
 
-	def apply(self, trades):
+	def apply(self, trades, accounts):
 		trade = get_last_trade(trades, self.instrument)
 		if trade:
 			trade.move_stop(self.stop, self.date)
@@ -52,18 +53,31 @@ class MoveStop:
 			print(Fore.RED + 'Failed to move stop for {0} to {1}: No previous trade found'.format(
 				self.instrument, self.stop) + Fore.RESET)
 
+
+class Account:
+	def __init__(self, name):
+		self.name = name
+		self.pips = 0
+		# todo: add ledger?
+
+	def adjust(self, pl):
+		self.pips += pl
+
+
 def date_from_str(date_str):
 		datetime.datetime.strptime(date_str, '%Y-%m-%dT%H:%M:%S')
 
 class Trade:
 
-	def __init__(self, instrument, direction, opening, stop, date):
+	def __init__(self, instrument, direction, opening, stop, date, all_accounts):
 		self.instrument = instrument
 		self.direction = direction
 		self.opening = opening
 		self.stop = stop
-		self.closing_prices = {}
 		self.date = date if isinstance(date, datetime.datetime) else date_from_str(date)
+		self.all_accounts = all_accounts
+		self.accounts_pl = {}
+		self.closing_prices = {}
 
 		if stop:
 			if direction == 'LONG':
@@ -80,8 +94,6 @@ class Trade:
 		print('{:<13} {:<13} {:<6} @ {:<6} Stop: {:<6} Risk: {:<4}'.format(
 			'Trade Opened:', self.instrument, self.direction, self.opening, self.stop, self.risk))
 
-	account_ids = ['A','B','C']
-
 	def close(self, price, accounts, date, kwargs=None):
 		if price == 'STOP':
 			price = self.stop
@@ -95,19 +107,21 @@ class Trade:
 		elif isinstance(price, str):
 			raise Exception('Unsupported closing price {0}'.format(price))
 
-		# if 'ALL' accounts then close remaining open accounts
-		open_accounts = [a for a in self.account_ids if a not in self.closing_prices.keys()]
-		accounts_to_close = open_accounts if accounts == 'ALL' else accounts
+		open_accounts = [a for a in self.all_accounts if a.name not in self.closing_prices.keys()]
+		accounts_to_close = [a for a in open_accounts if a in accounts]
 
 		for account in accounts_to_close:
-			self.closing_prices[account] = price
+			self.closing_prices[account.name] = price
+			pl = price - self.opening if self.direction == 'LONG' else self.opening - price
+			self.accounts_pl[account.name] = pl
+			account.adjust(pl)
 
-		accounts_pl = dict([accpl for accpl in self.pl().items() if accpl[0] in accounts_to_close])
-		total_pl = sum(accounts_pl.values())
+		total_pl = sum(self.accounts_pl.values())
 		pl_color = Fore.GREEN if total_pl > 0 else Fore.RED
 
+		account_names = ','.join([acc.name for acc in accounts])
 		print('{}{:<13} {:<13} {:<6} @ {:<6} for accounts {:<16}{}P/L: {}{}'.format(
-			Fore.YELLOW, 'Trade Closed:', self.instrument, self.direction, price, accounts, pl_color, accounts_pl, Fore.RESET))
+			Fore.YELLOW, 'Trade Closed:', self.instrument, self.direction, price, account_names, pl_color, self.accounts_pl, Fore.RESET))
 
 	def move_stop(self, stop, date):
 		prev_stop = self.stop
@@ -122,7 +136,4 @@ class Trade:
 		return self.closing == None
 
 	def pl(self):
-		accounts_pl = {}
-		for account, closing in self.closing_prices.items():
-			accounts_pl[account] = closing - self.opening if self.direction == 'LONG' else self.opening - closing
-		return accounts_pl
+		return self.accounts_pl

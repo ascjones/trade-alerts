@@ -59,7 +59,19 @@ def test_close_existing_trade_when_new_trade_for_same_instrument():
 		OpenTrade('DOW', 'SHORT', 15000, 15100, default_date),
 		OpenTrade('DOW', 'SHORT', 15100, 15200, default_date),
 	]
-	trades = backtest.run_backtest(alerts).trades
+	result = backtest.run_backtest(alerts).trades
 	assert len(trades) == 2
 	assert_trade(trades[0], closing_prices=all_accounts_pl(15100))
 	assert_trade(trades[1], opening=15100, stop=15200)
+
+def test_calculate_pl_from_all_trades():
+	alerts = [
+		OpenTrade('DOW', 'SHORT', 15000, 15100, default_date),
+		OpenTrade('DOW', 'SHORT', 15100, 15200, default_date),
+		OpenTrade('GOLD', 'LONG', 13400, 13300, default_date),
+		CloseTrade('GOLD', 13500, 'ALL', default_date),
+		CloseTrade('DOWN', 14900, 'ALL', default_date)
+	]
+	result = backtest.run_backtest(alerts)
+	assert = result.account_pl('A') == 200
+	assert = result.total_pl() == 600
