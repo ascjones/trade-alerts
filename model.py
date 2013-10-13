@@ -3,7 +3,7 @@ import datetime
 from colorama import init, Fore
 
 def get_last_trade(trades, instrument):
-	return next((t for t in trades[::-1] if t.instrument == instrument), None)
+	return next((t for t in trades[::-1] if t.instrument == instrument and t.isopen()), None)
 
 class OpenTrade:
 	def __init__(self, instrument, direction, price, stop, date):
@@ -15,7 +15,7 @@ class OpenTrade:
 
 	def apply(self, trades, all_accounts):
 		existing_trade = get_last_trade(trades, self.instrument)
-		if existing_trade:
+		if existing_trade and existing_trade.isopen():
 			print(Fore.MAGENTA + 'Closing existing {} {} trade, assuming we have been stopped out'
 				.format(existing_trade.direction, existing_trade.instrument) + Fore.RESET)
 			existing_trade.close('STOP', all_accounts, self.date)
@@ -63,6 +63,9 @@ class Account:
 	def adjust(self, pl):
 		self.pips += pl
 
+	def __repr__(self):
+		return 'Acc {}: {}'.format(self.name, self.pips)
+
 
 def date_from_str(date_str):
 		datetime.datetime.strptime(date_str, '%Y-%m-%dT%H:%M:%S')
@@ -109,19 +112,23 @@ class Trade:
 
 		open_accounts = [a for a in self.all_accounts if a.name not in self.closing_prices.keys()]
 		accounts_to_close = [a for a in open_accounts if a in accounts]
+		account_pls = []
+		total_pl = 0
 
 		for account in accounts_to_close:
 			self.closing_prices[account.name] = price
 			pl = price - self.opening if self.direction == 'LONG' else self.opening - price
 			self.accounts_pl[account.name] = pl
+			account_pls.append((account.name, pl))
+			total_pl += pl
 			account.adjust(pl)
 
-		total_pl = sum(self.accounts_pl.values())
 		pl_color = Fore.GREEN if total_pl > 0 else Fore.RED
 
 		account_names = ','.join([acc.name for acc in accounts])
+		account_pls = ' '.join(['{}: {:>4}'.format(acc_pl[0], acc_pl[1]) for acc_pl in account_pls])
 		print('{}{:<13} {:<13} {:<6} @ {:<6} for accounts {:<16}{}P/L: {}{}'.format(
-			Fore.YELLOW, 'Trade Closed:', self.instrument, self.direction, price, account_names, pl_color, self.accounts_pl, Fore.RESET))
+			Fore.YELLOW, 'Trade Closed:', self.instrument, self.direction, price, account_names, pl_color, account_pls, Fore.RESET))
 
 	def move_stop(self, stop, date):
 		prev_stop = self.stop
@@ -133,7 +140,7 @@ class Trade:
 			Fore.MAGENTA, 'Stop Moved:', self.instrument, self.direction, prev_stop, self.stop, Fore.RESET))
 
 	def isopen(self):
-		return self.closing == None
+		return all([a.name in self.closing_prices.keys() for a in self.all_accounts]) == False
 
 	def pl(self):
 		return self.accounts_pl
