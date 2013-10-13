@@ -38,7 +38,9 @@ Short:  {} ({}%)
 P/L: A:{}, B:{}, C:{}, Total: {}\n\n'''.format(
 	total, longs, perc(longs), shorts, perc(shorts), self.account_pl('A'), self.account_pl('B'), self.account_pl('C'), self.total_pl())
 
-		result += '\n'.join(['{} - {}'.format(instr, ','.join('{}:{}'.format(acc, pl) for acc, pl in pls.items())) for instr, pls in self.instruments_pl().items()])
+		result += '\n'.join(
+			['{:<13} {}'.format(instr, '\t'.join(
+				'{}:{:>5}'.format(acc, pl) for acc, pl in sorted(pls.items()) )) for instr, pls in self.instruments_pl().items()])
 		return result
 
 
@@ -58,7 +60,8 @@ class BackTest:
 if __name__ == '__main__':
 	backtest = BackTest()
 	instr = sys.argv[1] if len(sys.argv) == 2 else None
+
+	print('================================================================================\n')
 	result = backtest.run(alerts.trade_alerts, instr)
 	print(result)
-
 	print('================================================================================\n')
