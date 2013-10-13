@@ -33,6 +33,7 @@ class BackTestResult:
 		winners_avg = np.mean(winners)
 		losses = [t.total_pl() for t in self.trades if t.total_pl() < 0]
 		losses_avg = np.mean(losses)
+		risk_avg = np.mean([t.risk for t in self.trades if isinstance(t.risk, int)])
 
 		def perc(trade_count):
 			return (trade_count / total) * 100
@@ -43,9 +44,10 @@ Long:    {} ({:.2f}%)
 Short:   {} ({:.2f}%)
 Winners: {}, Avg {} 
 Losses   {}, Avg {}
+Avg Risk {}
 P/L: 	 A:{}, B:{}, C:{}, Total: {}\n\n'''.format(
 	total, longs, perc(longs), shorts, perc(shorts), 
-	len(winners), winners_avg, len(losses), losses_avg,
+	len(winners), winners_avg, len(losses), losses_avg, risk_avg,
 	self.account_pl('A'), self.account_pl('B'), self.account_pl('C'), self.total_pl())
 
 		result += '\n'.join(

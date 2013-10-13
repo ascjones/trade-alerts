@@ -1,6 +1,7 @@
 import pdb
 import datetime
 from colorama import init, Fore
+import numpy as np
 
 def get_last_trade(trades, instrument):
 	return next((t for t in trades[::-1] if t.instrument == instrument and t.isopen()), None)
@@ -147,4 +148,3 @@ class Trade:
 
 	def total_pl(self):
 		return sum([pl for acc, pl in self.accounts_pl.items()])
-		
