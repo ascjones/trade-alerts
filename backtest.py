@@ -33,8 +33,8 @@ class BackTestResult:
 
 		result = ''' 
 Trades: {}
-Long:   {} ({}%)
-Short:  {} ({}%)
+Long:   {} ({:.2f}%)
+Short:  {} ({:.2f}%)
 P/L: A:{}, B:{}, C:{}, Total: {}\n\n'''.format(
 	total, longs, perc(longs), shorts, perc(shorts), self.account_pl('A'), self.account_pl('B'), self.account_pl('C'), self.total_pl())
 
@@ -53,7 +53,6 @@ class BackTest:
 		for alert in trade_alerts:
 			if instruments == None or alert.instrument in instruments:
 				alert.apply(trades, self.accounts)
-
 
 		return BackTestResult(trades, self.accounts)
 
