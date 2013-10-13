@@ -144,3 +144,7 @@ class Trade:
 
 	def pl(self):
 		return self.accounts_pl
+
+	def total_pl(self):
+		return sum([pl for acc, pl in self.accounts_pl.items()])
+		

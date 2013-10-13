@@ -2,6 +2,7 @@ from model import *
 import alerts
 from collections import defaultdict
 import sys
+import numpy as np
 
 class BackTestResult:
 	def __init__(self, trades, accounts):
@@ -28,15 +29,24 @@ class BackTestResult:
 		longs = len([t for t in self.trades if t.direction == 'LONG'])
 		shorts = total - longs
 
+		winners = [t.total_pl() for t in self.trades if t.total_pl() >= 0]
+		winners_avg = np.mean(winners)
+		losses = [t.total_pl() for t in self.trades if t.total_pl() < 0]
+		losses_avg = np.mean(losses)
+
 		def perc(trade_count):
 			return (trade_count / total) * 100
 
 		result = ''' 
-Trades: {}
-Long:   {} ({:.2f}%)
-Short:  {} ({:.2f}%)
-P/L: A:{}, B:{}, C:{}, Total: {}\n\n'''.format(
-	total, longs, perc(longs), shorts, perc(shorts), self.account_pl('A'), self.account_pl('B'), self.account_pl('C'), self.total_pl())
+Trades:  {}
+Long:    {} ({:.2f}%)
+Short:   {} ({:.2f}%)
+Winners: {}, Avg {} 
+Losses   {}, Avg {}
+P/L: 	 A:{}, B:{}, C:{}, Total: {}\n\n'''.format(
+	total, longs, perc(longs), shorts, perc(shorts), 
+	len(winners), winners_avg, len(losses), losses_avg,
+	self.account_pl('A'), self.account_pl('B'), self.account_pl('C'), self.total_pl())
 
 		result += '\n'.join(
 			['{:<13} {}'.format(instr, '\t'.join(
